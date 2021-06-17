@@ -17,7 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'MMV Docs'
+import sphinx_rtd_theme
+project = 'MMV Modern Military Vehicle System'
 copyright = '2021, Ruan Lucas'
 author = 'Ruan Lucas'
 
@@ -54,7 +55,6 @@ html_static_path = ['_static']
 
 ##########################################
 
-import sphinx_rtd_theme
 
 extensions = [
 

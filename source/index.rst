@@ -1,20 +1,16 @@
-.. MMV Docs documentation master file, created by
-   sphinx-quickstart on Tue Jun 15 21:19:12 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
-Welcome to MMV Docs's documentation!
-====================================
+Introduction
+============
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+Modern Military Vehicle System is a military vehicle simulation asset for arcade games. 
+With it you can create wheel and track physics simulation, turret and fire control, support 
+for explosion effects, dust (caused by wheel movement), engine sound and much more.
+This documentation will help you configure and create your own customizable vehicle.
 
+.. figure:: /img/mmv-main-page.jpg
 
 
-Indices and tables
-==================
+To start, download the asset available from the Asset Store [...] and take a look at the 
+example scene that comes with the project, in the next chapters we will see in more detail 
+all the components that are part of this system.
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

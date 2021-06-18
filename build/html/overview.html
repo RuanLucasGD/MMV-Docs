@@ -89,6 +89,12 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#modules">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#movement-simulation">Movement Simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#acceleration">Acceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aim-control">Aim Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-control">Camera Control</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -167,13 +173,76 @@ would be an MBT (Main Battle tank) vehicle that contains the modules <strong>MMV
 <strong>MMV_TurretController</strong>. The component <strong>MMV_MBT_Vehicle</strong>, the vehicle’s main physics script, contains all these
 modules that work together, the data delivered by a given module are used by other modules making them
 interconnected.</p>
-<p>Below is a diagram that demonstrates how these modules are wired. The engine must deliver the left and right
-throttle and brake force to the wheel manager, so the wheels will know how much throttle and brake force to apply.
-There are specific forces for each side, as each track has its own acceleration and brake, increasing the force
-on one side and decreasing it on the other can cause the vehicle to rotate, thus being a form of steering. How the
-move works will be explained on the next page.</p>
+<p>Below is a diagram that demonstrates how these modules are wired. The engine must deliver the left and right throttle
+and brake force to the wheel manager. The manager must apply the suspension force and use the acceleration and brake
+forces on the wheels.</p>
 <div class="figure align-default">
 <img alt="_images/mmv_overview_diagram.png" src="_images/mmv_overview_diagram.png" />
+</div>
+<p>There are specific forces for each side, as each track has its own acceleration and brake, increasing the force on
+one side and decreasing it on the other can cause the vehicle to rotate, thus being a form of steering. How the move
+works will be explained below.</p>
+</div>
+<div class="section" id="movement-simulation">
+<h2>Movement Simulation<a class="headerlink" href="#movement-simulation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="acceleration">
+<h3>Acceleration<a class="headerlink" href="#acceleration" title="Permalink to this headline">¶</a></h3>
+<p>The engine delivers different forces to each side of the wheels, left and right, acceleration left, right, left and
+right brakes using inputs given by some controller, this controller tells the vehicle whether to go forward or
+backward or to turn right and left.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Example code</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vehicle</span><span class="o">.</span><span class="n">Acceleration</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>   <span class="o">//</span> <span class="n">forward</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">Acceleration</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>  <span class="o">//</span> <span class="n">backward</span>
+
+<span class="n">vehicle</span><span class="o">.</span><span class="n">Sterring</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>       <span class="o">//</span> <span class="n">left</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">Sterring</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>      <span class="o">//</span> <span class="n">right</span>
+</pre></div>
+</div>
+<p>The movement consists of the more you accelerate, the less you should brake (or the more you brake, the less you should
+accelerate). By changing the acceleration weights on each side we can change the direction in which the vehicle moves
+or turns it.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_vehicle_movement.png" src="_images/mbt_vehicle_movement.png" />
+</div>
+<p>When configuring your vehicle, remember that the amount of front and side friction, amount of acceleration, acceleration
+speed and brake force influence the rotation speed of the vehicle</p>
+<div class="figure align-default">
+<img alt="_images/mbt_movement_example.gif" src="_images/mbt_movement_example.gif" />
+</div>
+<p>motion representation</p>
+</div>
+<div class="section" id="aim-control">
+<h3>Aim Control<a class="headerlink" href="#aim-control" title="Permalink to this headline">¶</a></h3>
+<p>Most of the hard work of the fire controller has already been done, just create a custom controller (or use one that comes
+with the system) to tell you where the target is, a global space position <code class="docutils literal notranslate"><span class="pre">Vector3</span></code> and that’s enough to the turret and
+the cannon aim at the target</p>
+<p>The aim is very precise and can hit targets even if the vehicle is at difficult angles and the rotation speed is always
+constant.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_cannon_angle_demonstration.png" src="_images/mbt_cannon_angle_demonstration.png" />
+</div>
+<p>The tower has no rotation limit, 360° angle</p>
+</div>
+<div class="section" id="camera-control">
+<h3>Camera Control<a class="headerlink" href="#camera-control" title="Permalink to this headline">¶</a></h3>
+<p>The default camera controller already tells the turret where it should aim, and also shows in its UI a vector marker of the
+front of the cannon to know where it’s aiming at the moment, it works the same way we see in games like world of tanks or war
+thunder.</p>
+<div class="figure align-default">
+<img alt="_images/gun_control_aim_example.png" src="_images/gun_control_aim_example.png" />
+</div>
+<p>To make this marker work it was necessary to do a little more than take the cannon’s front position using raycasts and convert
+it to screen space, that’s because Unity can’t return the exact position when the forward distance is too far, the values come
+out completely different from what they were supposed to be.
+To get around this, a raycast was done from the camera to the position of the front of the cannon (with raycast) and a
+<code class="docutils literal notranslate"><span class="pre">Quaternion.LookAt</span></code> to that position. The forward vector of this <code class="docutils literal notranslate"><span class="pre">(lookAt</span> <span class="pre">*</span> <span class="pre">Vector3.forward)</span> <span class="pre">+</span> <span class="pre">cameraPos</span></code> converted to screen
+space was the form used to get the position of the cannon’s crosshair marker.</p>
+<div class="figure align-default">
+<img alt="_images/mmv_aim_marker_ui.png" src="_images/mmv_aim_marker_ui.png" />
+</div>
 </div>
 </div>
 </div>

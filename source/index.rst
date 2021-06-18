@@ -14,3 +14,6 @@ To start, download the asset available from the Asset Store [...] and take a loo
 example scene that comes with the project, in the next chapters we will see in more detail 
 all the components that are part of this system.
 
+.. toctree:: 
+
+    overview.rst

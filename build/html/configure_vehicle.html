@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Create your own MMV Main Battle Tank Vehicle &mdash; MMV Modern Military Vehicle System  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MMV Modern Military Vehicle System
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create your own MMV Main Battle Tank Vehicle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#importing-vehicle-model">Importing vehicle model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hierarchy">Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#orientation">Orientation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tracks">Tracks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MMV Modern Military Vehicle System</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Create your own MMV Main Battle Tank Vehicle</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/configure_vehicle.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="create-your-own-mmv-main-battle-tank-vehicle">
+<h1>Create your own MMV Main Battle Tank Vehicle<a class="headerlink" href="#create-your-own-mmv-main-battle-tank-vehicle" title="Permalink to this headline">¶</a></h1>
+<p>Before creating your own vehicle, take a look at what comes with the project,
+change some settings so that you understand a little of what each option does,
+but anyway we are trying to make it as simple as possible to configure, alias,
+if by If you find something that doesn’t make sense or is difficult to configure
+or understand, please send your feedback to help us make MMV better every day.</p>
+<div class="section" id="importing-vehicle-model">
+<h2>Importing vehicle model<a class="headerlink" href="#importing-vehicle-model" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default">
+<img alt="_images/3d_view_blender_model.png" src="_images/3d_view_blender_model.png" />
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before importing a 3d model, make it follow the defaults of the example vehicle model:</p>
+</div>
+<div class="section" id="hierarchy">
+<h3>Hierarchy<a class="headerlink" href="#hierarchy" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>To create a complete vehicle, you need 8 components, but only 3 are required:</dt><dd><ul class="simple">
+<li><p>Body</p></li>
+<li><p>Turret</p></li>
+<li><p>Cannon</p></li>
+<li><p>Left wheels (all separate)</p></li>
+<li><p>Right wheels (all separate)</p></li>
+<li><p>Armature</p></li>
+<li><p>Left Track (riged)</p></li>
+<li><p>Right Track (riged)</p></li>
+</ul>
+</dd>
+</dl>
+<p>You can follow this example hierarchy to organize your models:</p>
+<div class="figure align-default">
+<img alt="_images/mbt_model_hierarchy.png" src="_images/mbt_model_hierarchy.png" />
+</div>
+<div class="line-block">
+<div class="line"><strong>Blue - Empties</strong></div>
+<div class="line"><strong>Pink - Meshs</strong></div>
+<div class="line"><strong>Green - Armature</strong></div>
+</div>
+</div>
+<div class="section" id="orientation">
+<h3>Orientation<a class="headerlink" href="#orientation" title="Permalink to this headline">¶</a></h3>
+<p>In order for the MMV to work correctly, make sure your model has <strong>all the
+objects</strong> with the <strong>identity transformation</strong> and must also be pointed with
+the <strong>Z Axis to forward</strong> and and <strong>scale = 1</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If this is not done, many orientation problems will happen and can
+generate very annoying bugs, so don’t use your model <strong>.Blend</strong> if you
+use Blender (or any poorly configured model) as the axes may be in the
+wrong directions.</p>
+</div>
+<div class="figure align-default">
+<img alt="_images/mbt_orientation_incorretly.jpg" src="_images/mbt_orientation_incorretly.jpg" />
+</div>
+<div class="figure align-default">
+<img alt="_images/mbt_orientation_corretly.jpg" src="_images/mbt_orientation_corretly.jpg" />
+</div>
+<p>Exporting complex models with armor from Blender to Unity with identity
+transformations is a bit complicated, luckily there is a <a class="reference external" href="https://github.com/EdyJ/blender-to-unity-fbx-exporter">plugin for Blender</a> that can do the
+export in a simple way, I recommend you use it to not have so many problems.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use other 3D modeling software and also have export issues,  please
+open a <a class="reference external" href="https://github.com/RuanLucasGD/MMV-Docs/issues">new Issue</a> so
+we can work on it.</p>
+</div>
+<p>After installing the plugin, you will have this option along with the other
+export options.</p>
+<div class="figure align-default">
+<img alt="_images/export_to_unity_plugin_demonstration.jpg" src="_images/export_to_unity_plugin_demonstration.jpg" />
+</div>
+</div>
+<div class="section" id="tracks">
+<h3>Tracks<a class="headerlink" href="#tracks" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default">
+<img alt="_images/mbt_tracks_demonstration.png" src="_images/mbt_tracks_demonstration.png" />
+</div>
+<p>For treadmill vehicles, there must be 2 models, left treadmill and right
+treadmill that need to be attached to a skeleton. The skeleton must have
+bones that run through the entire mat, one bone per wheel.</p>
+<div class="figure align-default">
+<img alt="_images/3d_view_blender_tracks_structure.png" src="_images/3d_view_blender_tracks_structure.png" />
+</div>
+<p>These settings are important because the bones will simulate the movement
+of the conveyor, each bone will follow the position of the wheels (via
+script, no configuration is needed for this in the model), and with this
+the conveyor will follow the position of the wheels .</p>
+<div class="figure align-default">
+<img alt="_images/track_movement_demo.gif" src="_images/track_movement_demo.gif" />
+</div>
+<p>Track movement depends on how your UV has been set up. UV influences speed,
+direction and how the belt is drawn on the model.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_track_uv.jpg" src="_images/mbt_track_uv.jpg" />
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Ruan Lucas.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

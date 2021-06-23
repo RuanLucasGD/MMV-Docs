@@ -21,8 +21,8 @@ There are specific forces for each side, as each track has its own acceleration 
 one side and decreasing it on the other can cause the vehicle to rotate, thus being a form of steering. How the move 
 works will be explained below.
 
-Movement Simulation
--------------------
+Behaviour
+---------
 
 Acceleration
 ~~~~~~~~~~~~

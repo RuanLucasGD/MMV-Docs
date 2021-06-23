@@ -17,3 +17,4 @@ all the components that are part of this system.
 .. toctree:: 
 
     overview.rst
+    configure_vehicle.rst

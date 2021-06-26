@@ -95,6 +95,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#tracks">Tracks</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-the-vehicle">Configuring the vehicle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vehicle-hierarchy">Vehicle Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimum-functional">Minimum functional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-simple-controller">Adding a simple controller</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -261,6 +267,81 @@ direction and how the belt is drawn on the model.</p>
 <div class="figure align-default">
 <img alt="_images/mbt_track_uv.jpg" src="_images/mbt_track_uv.jpg" />
 </div>
+</div>
+</div>
+<div class="section" id="configuring-the-vehicle">
+<h2>Configuring the vehicle<a class="headerlink" href="#configuring-the-vehicle" title="Permalink to this headline">¶</a></h2>
+<p>For starters, it’s important that you have a test scene to be able to simulate
+physics, let’s use this simple scene for the tutorial.</p>
+<div class="figure align-default">
+<img alt="_images/sample_environment.jpg" src="_images/sample_environment.jpg" />
+</div>
+<p>Now drag your vehicle model to the scene for us to configure. This is the default
+template that comes in the example assets.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_example_model.jpg" src="_images/mbt_example_model.jpg" />
+</div>
+<div class="section" id="vehicle-hierarchy">
+<h3>Vehicle Hierarchy<a class="headerlink" href="#vehicle-hierarchy" title="Permalink to this headline">¶</a></h3>
+<p>Before adding the control and physics scripts we need to configure the wheels, the
+wheel hierarchy is similar to any standard Unity vehicle, you need to have empty
+gameObjects for physics and another gameObject like meshRenderer for the wheel model.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_wheels_hierarchy.jpg" src="_images/mbt_wheels_hierarchy.jpg" />
+</div>
+<div class="figure align-default">
+<img alt="_images/mbt_wheels_example_hierarchy.png" src="_images/mbt_wheels_example_hierarchy.png" />
+</div>
+<p>The first and last wheel on each side don’t need to go with the others as they don’t
+have physics, of course it depends on your vehicle, but let’s focus on this one. These
+wheels only need to keep up with the rotation of the others and that’s why they have a
+different configuration and we don’t need to modify anything here.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_wheels_example_hierarchy_2.jpg" src="_images/mbt_wheels_example_hierarchy_2.jpg" />
+</div>
+</div>
+<div class="section" id="minimum-functional">
+<h3>Minimum functional<a class="headerlink" href="#minimum-functional" title="Permalink to this headline">¶</a></h3>
+<p>Make sure the model has some collider for your body.</p>
+<div class="figure align-default">
+<img alt="_images/sample_vehicle_collisor.jpg" src="_images/sample_vehicle_collisor.jpg" />
+</div>
+<p>For your MBT to have physics add the <code class="docutils literal notranslate"><span class="pre">MMV_MBT_Vehicle</span></code> component to your <strong>GameObject
+root of the vehicle</strong></p>
+<div class="figure align-default">
+<img alt="_images/sample_vehicle_add_component.jpg" src="_images/sample_vehicle_add_component.jpg" />
+</div>
+<p>When the component is added, many settings will already be adjusted to make your life
+easier, including a <strong>RigidBody</strong> component will be added and its mass will be set to 1000,
+the default setting.</p>
+<div class="figure align-default">
+<img alt="_images/sample_mmv_mbt_component.jpg" src="_images/sample_mmv_mbt_component.jpg" />
+</div>
+<p>To see it work we must add the wheels to our wheel manager. Let’s select the empty gameObjects
+that represent the wheel colliders.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_wheel_colliders.jpg" src="_images/mbt_wheel_colliders.jpg" />
+</div>
+<p>You can add your wheels here, be careful to separate the sides correctly (right and left).</p>
+<div class="figure align-default">
+<img alt="_images/mbt_vehicle_component_wheels.jpg" src="_images/mbt_vehicle_component_wheels.jpg" />
+</div>
+<p>Once you have added the objects for the wheel colliders, it will look something like this.
+We’ll leave the other spaces empty, we don’t need them now.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_vehicle_component_wheels_added.jpg" src="_images/mbt_vehicle_component_wheels_added.jpg" />
+</div>
+<p>That’s enough for our vehicle to have physics. If your <strong>Gizmos</strong> are active and the vehicle is
+selected you will be able to see the representation of the wheels.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_physics_representation.jpg" src="_images/mbt_physics_representation.jpg" />
+</div>
+<div class="figure align-default">
+<img alt="_images/mbt_physics_demo.gif" src="_images/mbt_physics_demo.gif" />
+</div>
+</div>
+<div class="section" id="adding-a-simple-controller">
+<h3>Adding a simple controller<a class="headerlink" href="#adding-a-simple-controller" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>

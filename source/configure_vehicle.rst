@@ -93,3 +93,73 @@ Track movement depends on how your UV has been set up. UV influences speed,
 direction and how the belt is drawn on the model.
 
 .. figure:: img/mbt_track_uv.jpg
+
+Configuring the vehicle
+~~~~~~~~~~~~~~~~~~~~~~~
+
+For starters, it's important that you have a test scene to be able to simulate 
+physics, let's use this simple scene for the tutorial.
+
+.. figure:: img/sample_environment.jpg
+
+Now drag your vehicle model to the scene for us to configure. This is the default 
+template that comes in the example assets.
+
+.. figure:: img/mbt_example_model.jpg
+
+Vehicle Hierarchy
+-----------------
+
+Before adding the control and physics scripts we need to configure the wheels, the 
+wheel hierarchy is similar to any standard Unity vehicle, you need to have empty 
+gameObjects for physics and another gameObject like meshRenderer for the wheel model.
+
+.. figure:: img/mbt_wheels_hierarchy.jpg
+
+.. figure:: img/mbt_wheels_example_hierarchy.png
+
+The first and last wheel on each side don't need to go with the others as they don't 
+have physics, of course it depends on your vehicle, but let's focus on this one. These 
+wheels only need to keep up with the rotation of the others and that's why they have a 
+different configuration and we don't need to modify anything here.
+
+.. figure:: img/mbt_wheels_example_hierarchy_2.jpg
+
+Minimum functional
+------------------
+
+Make sure the model has some collider for your body.
+
+.. figure:: img/sample_vehicle_collisor.jpg
+
+For your MBT to have physics add the ``MMV_MBT_Vehicle`` component to your **GameObject 
+root of the vehicle**
+
+.. figure:: img/sample_vehicle_add_component.jpg
+
+When the component is added, many settings will already be adjusted to make your life 
+easier, including a **RigidBody** component will be added and its mass will be set to 1000, 
+the default setting.
+
+.. figure:: img/sample_mmv_mbt_component.jpg
+
+To see it work we must add the wheels to our wheel manager. Let's select the empty gameObjects 
+that represent the wheel colliders.
+
+.. figure:: img/mbt_wheel_colliders.jpg
+
+You can add your wheels here, be careful to separate the sides correctly (right and left).
+
+.. figure:: img/mbt_vehicle_component_wheels.jpg
+
+Once you have added the objects for the wheel colliders, it will look something like this. 
+We'll leave the other spaces empty, we don't need them now.
+
+.. figure:: img/mbt_vehicle_component_wheels_added.jpg
+
+That's enough for our vehicle to have physics. If your **Gizmos** are active and the vehicle is 
+selected you will be able to see the representation of the wheels.
+
+.. figure:: img/mbt_physics_representation.jpg
+
+.. figure:: img/mbt_physics_demo.gif

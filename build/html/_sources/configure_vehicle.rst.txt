@@ -94,8 +94,8 @@ direction and how the belt is drawn on the model.
 
 .. figure:: img/mbt_track_uv.jpg
 
-Configuring the vehicle
-~~~~~~~~~~~~~~~~~~~~~~~
+Minimum Vehicle
+~~~~~~~~~~~~~~~
 
 For starters, it's important that you have a test scene to be able to simulate 
 physics, let's use this simple scene for the tutorial.
@@ -164,6 +164,20 @@ selected you will be able to see the representation of the wheels.
 
 .. figure:: img/mbt_physics_demo.gif
 
-Adding a simple controller
+Adding a Simple Controller
 --------------------------
 
+To be able to control your vehicle, add this component, it already gives you all the necessary 
+inputs to control your vehicle using keyboard, mouse and gamepad.
+
+.. figure:: img/adding_controll_component.jpg
+
+Add the Axis of your project inputs to make your vehicle move. Also add some key or button on 
+the gamepad for the brake. You don't need to have both inputs configured, you can control the 
+vehicle with just one input type.
+
+.. figure:: img/controll_vehicle_component.jpg
+
+Once configured we can see the controls working.
+
+.. figure:: img/mbt_simple_movement_demo.gif

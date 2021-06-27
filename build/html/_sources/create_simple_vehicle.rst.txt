@@ -1,5 +1,5 @@
-Create your own MMV Main Battle Tank Vehicle
-============================================
+Create Simple Vehicle
+=====================
 
 Before creating your own vehicle, take a look at what comes with the project, 
 change some settings so that you understand a little of what each option does, 
@@ -94,8 +94,8 @@ direction and how the belt is drawn on the model.
 
 .. figure:: img/mbt_track_uv.jpg
 
-Minimum Vehicle
-~~~~~~~~~~~~~~~
+Configuring the vehicle
+~~~~~~~~~~~~~~~~~~~~~~~
 
 For starters, it's important that you have a test scene to be able to simulate 
 physics, let's use this simple scene for the tutorial.

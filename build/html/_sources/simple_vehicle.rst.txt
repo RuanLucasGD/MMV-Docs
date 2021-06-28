@@ -7,6 +7,8 @@ but anyway we are trying to make it as simple as possible to configure, alias,
 if by If you find something that doesn't make sense or is difficult to configure 
 or understand, please send your feedback to help us make MMV better every day.
 
+.. _Simple vehicle tutorial:
+
 Importing vehicle model
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -47,7 +49,7 @@ the **Z Axis to forward** and and **scale = 1**.
 .. warning::
     
     If this is not done, many orientation problems will happen and can 
-    generate very annoying bugs, so don't use your model **.Blend** if you 
+    generate very annoying bugs, so don't use your model **.Blend file** if you 
     use Blender (or any poorly configured model) as the axes may be in the 
     wrong directions.
 
@@ -94,7 +96,7 @@ direction and how the belt is drawn on the model.
 
 .. figure:: img/mbt_track_uv.jpg
 
-Minimum Vehicle
+Simple Vehicle
 ~~~~~~~~~~~~~~~
 
 For starters, it's important that you have a test scene to be able to simulate 
@@ -181,3 +183,5 @@ vehicle with just one input type.
 Once configured we can see the controls working.
 
 .. figure:: img/mbt_simple_movement_demo.gif
+
+

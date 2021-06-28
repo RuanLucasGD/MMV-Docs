@@ -1,4 +1,4 @@
-Create your own MMV Main Battle Tank Vehicle
+Create your own MBT Vehicle
 ============================================
 
 Before creating your own vehicle, take a look at what comes with the project, 
@@ -184,17 +184,90 @@ Once configured we can see the controls working.
 
 .. figure:: img/mbt_simple_movement_demo.gif
 
-Advanced Configuration
-~~~~~~~~~~~~~~~~~~~~~~
+Advanced Vehicle Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To proceed, make sure you have seen the previous chapter of this `Simple vehicle tutorial`_ as 
 it explained important things on how to create a vehicle. Here is a continuity showing details 
 of configurations and how to improve our vehicle, let's go module by vehicle module, talk about 
 control and camera, have fun.
 
-Vehicle Modules 
----------------
-
 Engine
-~~~~~~
+------
 
+An important module for making wheel acceleration and brake calculations.
+
+Acceleration
+............
+
+Configure to make the vehicle more agile, control the maximum speed, acceleration speed, brake 
+force and maximum rotation speed.
+
+.. figure:: img/mbt_engine_module_2.jpg
+
+Acceleration
+
+    * **velocity:** the speed at which the vehicle accelerates, change so that the engine can reach full throttle faster or slower. Speed also influences the speed the vehicle takes to change direction (turn).
+    * **max:** the maximum engine throttle, the greater the power, the better for riding on broken terrain and the rotation speed improves and increases.
+    * **slowdown:** The force to decelerate when the controller does not provide any accelerating force.
+
+velocity
+
+    * **forward:** maximum speed the vehicle can move forward.
+    * **backward:** maximum speed the vehicle can move backward.
+
+Sterring
+
+    * **max rotation speed:** limits the rotation speed (change of vehicle direction) when the acceleration force of the engine is too high.
+
+Brake
+.....
+
+Configure the vehicle brake.
+
+.. figure:: img/mbt_engine_module_3.jpg
+
+Brake
+
+    * **brake force:** brake force.
+
+Gear System
+...........
+
+Configure so that the engine has different acceleration phases (transmission system), 
+the gear change is done by automatic. The higher the current gear, the higher the speed 
+and the lower the acceleration force, making it harder to climb hills. The gear shift 
+also influences the engine sound.
+
+.. figure:: img/mbt_engine_module_4.jpg
+
+Gear Settings
+    
+    * **loss of strength:** How much power the vehicle loses per gear, influences acceleration at high speeds and steep hills or any complicated place.
+
+Forward Gears
+
+    * **gears amount:** the amount of gears to accelerate forward.
+    * **gears:** set the values for gear changes at the correct speed.
+
+    **Example**
+
+    .. figure:: img/gear_bar.png
+
+Backward Gears
+
+    * **gears amount:** the amount of gears to accelerate backward.
+    * **gears:** set the values for gear changes at the correct speed.
+
+Engine Sound
+............
+
+Simulate engine sound with gearshift effects
+
+.. figure:: img/mbt_engine_module_5.jpg
+
+* **audio source:** audio player responsible for reproducing the engine sound.
+* **audio clip:** engine sound audio clip.
+* **min pitch:** minimum pitch simulates the engine without acceleration.
+* **max forward pitch:** the higher the pitch the easier it is to notice the full throttle of the engine moving forward.
+* **max backward pitch:** the higher the pitch the easier it is to notice the full throttle of the engine moving backward.

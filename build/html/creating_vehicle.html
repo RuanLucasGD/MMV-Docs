@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Create your own MMV Main Battle Tank Vehicle &mdash; MMV Modern Military Vehicle System  documentation</title>
+  <title>Create your own MBT Vehicle &mdash; MMV Modern Military Vehicle System  documentation</title>
   
 
   
@@ -88,7 +88,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Create your own MMV Main Battle Tank Vehicle</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create your own MBT Vehicle</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#importing-vehicle-model">Importing vehicle model</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#hierarchy">Hierarchy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#orientation">Orientation</a></li>
@@ -101,11 +101,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#adding-a-simple-controller">Adding a Simple Controller</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#advanced-configuration">Advanced Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#vehicle-modules">Vehicle Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-vehicle-configuration">Advanced Vehicle Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#engine">Engine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#acceleration">Acceleration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#brake">Brake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gear-system">Gear System</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#engine-sound">Engine Sound</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#engine">Engine</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -156,13 +161,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Create your own MMV Main Battle Tank Vehicle</li>
+      <li>Create your own MBT Vehicle</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/configure_vehicle.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/creating_vehicle.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,8 +180,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="create-your-own-mmv-main-battle-tank-vehicle">
-<h1>Create your own MMV Main Battle Tank Vehicle<a class="headerlink" href="#create-your-own-mmv-main-battle-tank-vehicle" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="create-your-own-mbt-vehicle">
+<h1>Create your own MBT Vehicle<a class="headerlink" href="#create-your-own-mbt-vehicle" title="Permalink to this headline">¶</a></h1>
 <p>Before creating your own vehicle, take a look at what comes with the project,
 change some settings so that you understand a little of what each option does,
 but anyway we are trying to make it as simple as possible to configure, alias,
@@ -364,18 +369,106 @@ vehicle with just one input type.</p>
 </div>
 </div>
 </div>
-<div class="section" id="advanced-configuration">
-<h2>Advanced Configuration<a class="headerlink" href="#advanced-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="advanced-vehicle-configuration">
+<h2>Advanced Vehicle Configuration<a class="headerlink" href="#advanced-vehicle-configuration" title="Permalink to this headline">¶</a></h2>
 <p>To proceed, make sure you have seen the previous chapter of this <a class="reference internal" href="#simple-vehicle-tutorial">Simple vehicle tutorial</a> as
 it explained important things on how to create a vehicle. Here is a continuity showing details
 of configurations and how to improve our vehicle, let’s go module by vehicle module, talk about
 control and camera, have fun.</p>
-<div class="section" id="vehicle-modules">
-<h3>Vehicle Modules<a class="headerlink" href="#vehicle-modules" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
 <div class="section" id="engine">
-<h2>Engine<a class="headerlink" href="#engine" title="Permalink to this headline">¶</a></h2>
+<h3>Engine<a class="headerlink" href="#engine" title="Permalink to this headline">¶</a></h3>
+<p>An important module for making wheel acceleration and brake calculations.</p>
+<div class="section" id="acceleration">
+<h4>Acceleration<a class="headerlink" href="#acceleration" title="Permalink to this headline">¶</a></h4>
+<p>Configure to make the vehicle more agile, control the maximum speed, acceleration speed, brake
+force and maximum rotation speed.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_engine_module_2.jpg" src="_images/mbt_engine_module_2.jpg" />
+</div>
+<p>Acceleration</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>velocity:</strong> the speed at which the vehicle accelerates, change so that the engine can reach full throttle faster or slower. Speed also influences the speed the vehicle takes to change direction (turn).</p></li>
+<li><p><strong>max:</strong> the maximum engine throttle, the greater the power, the better for riding on broken terrain and the rotation speed improves and increases.</p></li>
+<li><p><strong>slowdown:</strong> The force to decelerate when the controller does not provide any accelerating force.</p></li>
+</ul>
+</div></blockquote>
+<p>velocity</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>forward:</strong> maximum speed the vehicle can move forward.</p></li>
+<li><p><strong>backward:</strong> maximum speed the vehicle can move backward.</p></li>
+</ul>
+</div></blockquote>
+<p>Sterring</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>max rotation speed:</strong> limits the rotation speed (change of vehicle direction) when the acceleration force of the engine is too high.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="brake">
+<h4>Brake<a class="headerlink" href="#brake" title="Permalink to this headline">¶</a></h4>
+<p>Configure the vehicle brake.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_engine_module_3.jpg" src="_images/mbt_engine_module_3.jpg" />
+</div>
+<p>Brake</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>brake force:</strong> brake force.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="gear-system">
+<h4>Gear System<a class="headerlink" href="#gear-system" title="Permalink to this headline">¶</a></h4>
+<p>Configure so that the engine has different acceleration phases (transmission system),
+the gear change is done by automatic. The higher the current gear, the higher the speed
+and the lower the acceleration force, making it harder to climb hills. The gear shift
+also influences the engine sound.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_engine_module_4.jpg" src="_images/mbt_engine_module_4.jpg" />
+</div>
+<p>Gear Settings</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>loss of strength:</strong> How much power the vehicle loses per gear, influences acceleration at high speeds and steep hills or any complicated place.</p></li>
+</ul>
+</div></blockquote>
+<p>Forward Gears</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>gears amount:</strong> the amount of gears to accelerate forward.</p></li>
+<li><p><strong>gears:</strong> set the values for gear changes at the correct speed.</p></li>
+</ul>
+<p><strong>Example</strong></p>
+<div class="figure align-default">
+<img alt="_images/gear_bar.png" src="_images/gear_bar.png" />
+</div>
+</div></blockquote>
+<p>Backward Gears</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>gears amount:</strong> the amount of gears to accelerate backward.</p></li>
+<li><p><strong>gears:</strong> set the values for gear changes at the correct speed.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="engine-sound">
+<h4>Engine Sound<a class="headerlink" href="#engine-sound" title="Permalink to this headline">¶</a></h4>
+<p>Simulate engine sound with gearshift effects</p>
+<div class="figure align-default">
+<img alt="_images/mbt_engine_module_5.jpg" src="_images/mbt_engine_module_5.jpg" />
+</div>
+<ul class="simple">
+<li><p><strong>audio source:</strong> audio player responsible for reproducing the engine sound.</p></li>
+<li><p><strong>audio clip:</strong> engine sound audio clip.</p></li>
+<li><p><strong>min pitch:</strong> minimum pitch simulates the engine without acceleration.</p></li>
+<li><p><strong>max forward pitch:</strong> the higher the pitch the easier it is to notice the full throttle of the engine moving forward.</p></li>
+<li><p><strong>max backward pitch:</strong> the higher the pitch the easier it is to notice the full throttle of the engine moving backward.</p></li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 

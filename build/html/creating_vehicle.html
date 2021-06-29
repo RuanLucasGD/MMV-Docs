@@ -109,6 +109,16 @@
 <li class="toctree-l4"><a class="reference internal" href="#engine-sound">Engine Sound</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#turret">Turret</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wheels">Wheels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wheels-caracteristics">Wheels caracteristics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Tracks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#weels-left-and-right">Weels (left and right)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-wheels-renderers-left-and-right">Additional wheels renderers (left and right)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wheels-particles">Wheels particles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#stability">Stability</a></li>
 </ul>
 </li>
 </ul>
@@ -197,7 +207,7 @@ or understand, please send your feedback to help us make MMV better every day.</
 <p>Before importing a 3d model, make it follow the defaults of the example vehicle model:</p>
 </div>
 <div class="section" id="hierarchy">
-<h3>Hierarchy<a class="headerlink" href="#hierarchy" title="Permalink to this headline">¶</a></h3>
+<span id="model-hierarchy"></span><h3>Hierarchy<a class="headerlink" href="#hierarchy" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>To create a complete vehicle, you need 8 components, but only 3 are required:</dt><dd><ul class="simple">
 <li><p>Body</p></li>
@@ -255,7 +265,7 @@ export options.</p>
 </div>
 </div>
 <div class="section" id="tracks">
-<h3>Tracks<a class="headerlink" href="#tracks" title="Permalink to this headline">¶</a></h3>
+<span id="tracks-model"></span><h3>Tracks<a class="headerlink" href="#tracks" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default">
 <img alt="_images/mbt_tracks_demonstration.png" src="_images/mbt_tracks_demonstration.png" />
 </div>
@@ -292,7 +302,7 @@ template that comes in the example assets.</p>
 <img alt="_images/mbt_example_model.jpg" src="_images/mbt_example_model.jpg" />
 </div>
 <div class="section" id="vehicle-hierarchy">
-<h3>Vehicle Hierarchy<a class="headerlink" href="#vehicle-hierarchy" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3>Vehicle Hierarchy<a class="headerlink" href="#vehicle-hierarchy" title="Permalink to this headline">¶</a></h3>
 <p>Before adding the control and physics scripts we need to configure the wheels, the
 wheel hierarchy is similar to any standard Unity vehicle, you need to have empty
 gameObjects for physics and another gameObject like meshRenderer for the wheel model.</p>
@@ -311,7 +321,7 @@ different configuration and we don’t need to modify anything here.</p>
 </div>
 </div>
 <div class="section" id="minimum-functional">
-<h3>Minimum functional<a class="headerlink" href="#minimum-functional" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>Minimum functional<a class="headerlink" href="#minimum-functional" title="Permalink to this headline">¶</a></h3>
 <p>Make sure the model has some collider for your body.</p>
 <div class="figure align-default">
 <img alt="_images/sample_vehicle_collisor.jpg" src="_images/sample_vehicle_collisor.jpg" />
@@ -467,6 +477,134 @@ also influences the engine sound.</p>
 <li><p><strong>max forward pitch:</strong> the higher the pitch the easier it is to notice the full throttle of the engine moving forward.</p></li>
 <li><p><strong>max backward pitch:</strong> the higher the pitch the easier it is to notice the full throttle of the engine moving backward.</p></li>
 </ul>
+</div>
+</div>
+<div class="section" id="turret">
+<h3>Turret<a class="headerlink" href="#turret" title="Permalink to this headline">¶</a></h3>
+<p>Responsible for controlling the turret and cannon to aim at targets.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_turret_module.jpg" src="_images/mbt_turret_module.jpg" />
+</div>
+<p>Transforms</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>turret:</strong> the tower transform.</p></li>
+<li><p><strong>cannon:</strong> the turret cannon.</p></li>
+</ul>
+</div></blockquote>
+<p>Turret</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>horizontal velocity:</strong> turret horizontal rotation speed.</p></li>
+</ul>
+</div></blockquote>
+<p>Cannon</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>vertical velocity:</strong> cannon vertical rotation speed.</p></li>
+<li><p><strong>angle:</strong> the maximum and minimum angle the cannon can be.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="wheels">
+<h3>Wheels<a class="headerlink" href="#wheels" title="Permalink to this headline">¶</a></h3>
+<p>Apply physics to wheels and conveyor movement.</p>
+<div class="figure align-default">
+<img alt="_images/mbt_wheels_module.jpg" src="_images/mbt_wheels_module.jpg" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All wheels have the same suspension configuration and handling.</p>
+</div>
+<div class="section" id="wheels-caracteristics">
+<h4>Wheels caracteristics<a class="headerlink" href="#wheels-caracteristics" title="Permalink to this headline">¶</a></h4>
+<p>Wheel</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>radius:</strong> size of all wheels.</p></li>
+</ul>
+</div></blockquote>
+<p>Spring</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>lenght:</strong> suspension size.</p></li>
+<li><p><strong>height:</strong> It is important that the suspension start position (wheel collider position is used as base) is always inside the vehicle body collider so that no strange bugs occur <strong>when the spring is 100% compressed</strong>. Not all vehicles have the wheel position inside the collider (it can be above the wheel) and so there is this option for the suspension position to be a little above the wheel, so it is easy to make the suspension position or inside the collider of the vehicle body. It is recommended that you leave it at 0.2 to 0.5, but it varies from vehicle to vehicle. When the collider already covers the wheel position this variable has no effect. You can see the height representation if your 3D view gizmos is active (yellow line at wheel position).</p></li>
+<li><p><strong>stiffness:</strong> How strong the suspension is.</p></li>
+<li><p><strong>damper:</strong> Smooths vehicle balance.</p></li>
+</ul>
+</div></blockquote>
+<p>Friction</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>forward:</strong> amount of forward slip.</p></li>
+<li><p><strong>side:</strong> amount of slip on curves.</p></li>
+<li><p><strong>multiply:</strong> proportionally increase or decrease frontal and lateral stiffness. You can use this value to simulate different types of terrain.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h4>Tracks<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>Applies acceleration effect to tracks.</p>
+<ul class="simple">
+<li><p><strong>multiply rotation velocity:</strong> track speed varies from vehicle to vehicle depending on how the UV and track models are set up, fine tune the track speed to match the speed of the wheels.</p></li>
+<li><p><strong>left track:</strong> your left track.</p></li>
+<li><p><strong>right track:</strong> your right track.</p></li>
+</ul>
+</div>
+<div class="section" id="weels-left-and-right">
+<h4>Weels (left and right)<a class="headerlink" href="#weels-left-and-right" title="Permalink to this headline">¶</a></h4>
+<p>Add your wheel, mesh and bone colliders here.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<dl class="simple">
+<dt>Before proceeding, see:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#model-hierarchy">Model hierarchy</a>.</p></li>
+<li><p><a class="reference internal" href="#tracks-model">Tracks model</a>.</p></li>
+<li><p><a class="reference internal" href="#vehicle-hierarchy">Vehicle hierarchy</a>.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<ul class="simple">
+<li><p><strong>collider:</strong> gameobject that represents the position of the wheel.</p></li>
+<li><p><strong>mesh:</strong> wheel model.</p></li>
+<li><p><strong>bone:</strong> bone representing the wheel (used to simulate conveyor movement).</p></li>
+</ul>
+</div>
+<div class="section" id="additional-wheels-renderers-left-and-right">
+<h4>Additional wheels renderers (left and right)<a class="headerlink" href="#additional-wheels-renderers-left-and-right" title="Permalink to this headline">¶</a></h4>
+<p>If you read <a class="reference internal" href="#minimum-functional">Minimum functional</a> you must have noticed that the first and last wheel on each
+side does not follow the same pattern as the others (of course it depends on the vehicle), in
+a common tank like the one since asset, it has no physics in these wheels, they just run together
+with the too much. In this case, we add these additional wheels that do not have physics to this
+list so that they follow the movement of the others.</p>
+</div>
+<div class="section" id="wheels-particles">
+<h4>Wheels particles<a class="headerlink" href="#wheels-particles" title="Permalink to this headline">¶</a></h4>
+<p>Add dust particles here for when your vehicle moves. You need to have a particle on each side,
+all of them filling the place of the wheels and already configured the way you want, the emission
+will be controlled by the wheel system itself.</p>
+<ul class="simple">
+<li><p><strong>left particle:</strong> left particle.</p></li>
+<li><p><strong>right particle:</strong> right particle.</p></li>
+<li><p><strong>max emission:</strong> the faster the vehicle goes, the more it will be emitted, <code class="docutils literal notranslate"><span class="pre">vehicle_velocity</span> <span class="pre">*</span> <span class="pre">max_emission</span></code>. Be careful when increasing this value above 1 to avoid sudden drops in performance.</p></li>
+<li><p><strong>stop delay:</strong> When a vehicle jumps on a ramp on a dirt road we can see a trail of dust in the air that comes out of the wheels for a few seconds and then ends, increasing the delay you can simulate this.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="stability">
+<h3>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h3>
+<p>Control the effect of gravity on the vehicle</p>
+<ul class="simple">
+<li><p><strong>slope deceleration:</strong> Forces the vehicle to go downhill on sloping places, as if the engine couldn’t handle climbing hills.</p></li>
+<li><p><strong>center of mass:</strong> An important part, the stability of the vehicle in inclined places, curves and vehicle rotation are influenced by the mass control, put here the position of the center of mass of your vehicle, the further up it is, it will be easier to tip over in curves, and the further forward or sideways it goes, the Y rotation of the ve will change.</p></li>
+</ul>
+<p><strong>Slope deceleration</strong></p>
+<div class="figure align-default">
+<img alt="_images/vehicle_slope_deceleration.svg" src="_images/vehicle_slope_deceleration.svg" /></div>
+<p><strong>Center of mass</strong></p>
+<div class="figure align-default">
+<img alt="_images/mbt_center_of_mass.jpg" src="_images/mbt_center_of_mass.jpg" />
 </div>
 </div>
 </div>

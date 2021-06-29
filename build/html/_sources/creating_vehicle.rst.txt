@@ -18,6 +18,8 @@ Importing vehicle model
 
     Before importing a 3d model, make it follow the defaults of the example vehicle model:
 
+.. _Model hierarchy:
+
 Hierarchy
 ---------
 
@@ -73,6 +75,8 @@ export options.
 
 .. figure:: img/export_to_unity_plugin_demonstration.jpg
 
+.. _Tracks model:
+
 Tracks
 ------
 
@@ -109,6 +113,8 @@ template that comes in the example assets.
 
 .. figure:: img/mbt_example_model.jpg
 
+.. _Vehicle hierarchy:
+
 Vehicle Hierarchy
 -----------------
 
@@ -126,6 +132,8 @@ wheels only need to keep up with the rotation of the others and that's why they 
 different configuration and we don't need to modify anything here.
 
 .. figure:: img/mbt_wheels_example_hierarchy_2.jpg
+
+.. _Minimum functional:
 
 Minimum functional
 ------------------
@@ -271,3 +279,118 @@ Simulate engine sound with gearshift effects
 * **min pitch:** minimum pitch simulates the engine without acceleration.
 * **max forward pitch:** the higher the pitch the easier it is to notice the full throttle of the engine moving forward.
 * **max backward pitch:** the higher the pitch the easier it is to notice the full throttle of the engine moving backward.
+
+Turret
+------
+
+Responsible for controlling the turret and cannon to aim at targets.
+
+.. figure:: img/mbt_turret_module.jpg
+
+Transforms
+
+    * **turret:** the tower transform.
+    * **cannon:** the turret cannon.
+
+Turret
+
+    * **horizontal velocity:** turret horizontal rotation speed.
+
+Cannon
+
+    * **vertical velocity:** cannon vertical rotation speed.
+    * **angle:** the maximum and minimum angle the cannon can be.
+
+Wheels
+------
+
+Apply physics to wheels and conveyor movement.
+
+.. figure:: img/mbt_wheels_module.jpg
+
+.. note::
+    
+    All wheels have the same suspension configuration and handling.
+
+Wheels caracteristics
+.....................
+
+Wheel
+
+    * **radius:** size of all wheels.
+
+Spring
+
+    * **lenght:** suspension size.
+    * **height:** It is important that the suspension start position (wheel collider position is used as base) is always inside the vehicle body collider so that no strange bugs occur **when the spring is 100% compressed**. Not all vehicles have the wheel position inside the collider (it can be above the wheel) and so there is this option for the suspension position to be a little above the wheel, so it is easy to make the suspension position or inside the collider of the vehicle body. It is recommended that you leave it at 0.2 to 0.5, but it varies from vehicle to vehicle. When the collider already covers the wheel position this variable has no effect. You can see the height representation if your 3D view gizmos is active (yellow line at wheel position).
+    * **stiffness:** How strong the suspension is.
+    * **damper:** Smooths vehicle balance.
+
+Friction
+
+    * **forward:** amount of forward slip.
+    * **side:** amount of slip on curves.
+    * **multiply:** proportionally increase or decrease frontal and lateral stiffness. You can use this value to simulate different types of terrain.
+
+Tracks
+......
+
+Applies acceleration effect to tracks.
+
+* **multiply rotation velocity:** track speed varies from vehicle to vehicle depending on how the UV and track models are set up, fine tune the track speed to match the speed of the wheels.
+* **left track:** your left track.
+* **right track:** your right track.
+
+Weels (left and right)
+......................
+
+Add your wheel, mesh and bone colliders here.
+
+.. warning::
+
+    Before proceeding, see:
+        * `Model hierarchy`_.
+        * `Tracks model`_.
+        * `Vehicle hierarchy`_.
+
+* **collider:** gameobject that represents the position of the wheel.
+* **mesh:** wheel model.
+* **bone:** bone representing the wheel (used to simulate conveyor movement).
+
+Additional wheels renderers (left and right)
+............................................
+
+If you read `Minimum functional`_ you must have noticed that the first and last wheel on each 
+side does not follow the same pattern as the others (of course it depends on the vehicle), in 
+a common tank like the one since asset, it has no physics in these wheels, they just run together 
+with the too much. In this case, we add these additional wheels that do not have physics to this 
+list so that they follow the movement of the others.
+
+Wheels particles
+................
+
+Add dust particles here for when your vehicle moves. You need to have a particle on each side, 
+all of them filling the place of the wheels and already configured the way you want, the emission 
+will be controlled by the wheel system itself.
+
+* **left particle:** left particle.
+* **right particle:** right particle.
+* **max emission:** the faster the vehicle goes, the more it will be emitted, ``vehicle_velocity * max_emission``. Be careful when increasing this value above 1 to avoid sudden drops in performance.
+* **stop delay:** When a vehicle jumps on a ramp on a dirt road we can see a trail of dust in the air that comes out of the wheels for a few seconds and then ends, increasing the delay you can simulate this.
+
+Stability
+---------
+
+Control the effect of gravity on the vehicle
+
+* **slope deceleration:** Forces the vehicle to go downhill on sloping places, as if the engine couldn't handle climbing hills.
+* **center of mass:** An important part, the stability of the vehicle in inclined places, curves and vehicle rotation are influenced by the mass control, put here the position of the center of mass of your vehicle, the further up it is, it will be easier to tip over in curves, and the further forward or sideways it goes, the Y rotation of the ve will change.
+
+**Slope deceleration**
+
+.. figure:: img/vehicle_slope_deceleration.svg
+
+**Center of mass**
+
+.. figure:: img/mbt_center_of_mass.jpg
+

@@ -325,6 +325,8 @@ Apply physics to wheels and conveyor movement.
 Wheels caracteristics
 .....................
 
+.. figure:: img/configuring_vehicle/modules/mbt_wheels_caracteristics.jpg
+
 Wheel
 
     * **radius:** size of all wheels.
@@ -347,6 +349,8 @@ Tracks
 
 Applies acceleration effect to tracks.
 
+.. figure:: img/configuring_vehicle/modules/mbt_wheels_tracks.jpg
+
 * **multiply rotation velocity:** track speed varies from vehicle to vehicle depending on how the UV and track models are set up, fine tune the track speed to match the speed of the wheels.
 * **left track:** your left track.
 * **right track:** your right track.
@@ -355,6 +359,8 @@ Weels (left and right)
 ......................
 
 Add your wheel, mesh and bone colliders here.
+
+.. figure:: img/configuring_vehicle/modules/mbt_wheels_wheels_2.jpg
 
 .. warning::
 
@@ -370,6 +376,8 @@ Add your wheel, mesh and bone colliders here.
 Additional wheels renderers (left and right)
 ............................................
 
+.. figure:: img/configuring_vehicle/modules/mbt_wheels_additional_wheels.jpg
+
 If you read `Minimum functional`_ you must have noticed that the first and last wheel on each 
 side does not follow the same pattern as the others (of course it depends on the vehicle), in 
 a common tank like the one since asset, it has no physics in these wheels, they just run together 
@@ -378,6 +386,8 @@ list so that they follow the movement of the others.
 
 Wheels particles
 ................
+
+.. figure:: img/configuring_vehicle/modules/mbt_wheels_particles.jpg
 
 Add dust particles here for when your vehicle moves. You need to have a particle on each side, 
 all of them filling the place of the wheels and already configured the way you want, the emission 
@@ -392,6 +402,8 @@ Stability
 ---------
 
 Control the effect of gravity on the vehicle
+
+.. figure:: img/configuring_vehicle/modules/mbt_stability.jpg
 
 * **slope deceleration:** Forces the vehicle to go downhill on sloping places, as if the engine couldn't handle climbing hills.
 * **center of mass:** An important part, the stability of the vehicle in inclined places, curves and vehicle rotation are influenced by the mass control, put here the position of the center of mass of your vehicle, the further up it is, it will be easier to tip over in curves, and the further forward or sideways it goes, the Y rotation of the ve will change.

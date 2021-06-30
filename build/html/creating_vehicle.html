@@ -200,7 +200,7 @@ or understand, please send your feedback to help us make MMV better every day.</
 <div class="section" id="importing-vehicle-model">
 <span id="simple-vehicle-tutorial"></span><h2>Importing vehicle model<a class="headerlink" href="#importing-vehicle-model" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default">
-<img alt="_images/3d_view_blender_model.png" src="_images/3d_view_blender_model.png" />
+<img alt="_images/ariete_model.jpg" src="_images/ariete_model.jpg" />
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -223,7 +223,7 @@ or understand, please send your feedback to help us make MMV better every day.</
 </dl>
 <p>You can follow this example hierarchy to organize your models:</p>
 <div class="figure align-default">
-<img alt="_images/mbt_model_hierarchy.png" src="_images/mbt_model_hierarchy.png" />
+<a class="reference internal image-reference" href="_images/mbt_model_hierarchy.jpg"><img alt="_images/mbt_model_hierarchy.jpg" src="_images/mbt_model_hierarchy.jpg" style="width: 454.99999999999994px; height: 487.2px;" /></a>
 </div>
 <div class="line-block">
 <div class="line"><strong>Blue - Empties</strong></div>
@@ -267,20 +267,20 @@ export options.</p>
 <div class="section" id="tracks">
 <span id="tracks-model"></span><h3>Tracks<a class="headerlink" href="#tracks" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default">
-<img alt="_images/mbt_tracks_demonstration.png" src="_images/mbt_tracks_demonstration.png" />
+<img alt="_images/mbt_tracks_demonstration.jpg" src="_images/mbt_tracks_demonstration.jpg" />
 </div>
 <p>For treadmill vehicles, there must be 2 models, left treadmill and right
 treadmill that need to be attached to a skeleton. The skeleton must have
 bones that run through the entire mat, one bone per wheel.</p>
 <div class="figure align-default">
-<img alt="_images/3d_view_blender_tracks_structure.png" src="_images/3d_view_blender_tracks_structure.png" />
+<img alt="_images/mbt_tracks_structure.jpg" src="_images/mbt_tracks_structure.jpg" />
 </div>
 <p>These settings are important because the bones will simulate the movement
 of the conveyor, each bone will follow the position of the wheels (via
 script, no configuration is needed for this in the model), and with this
 the conveyor will follow the position of the wheels .</p>
 <div class="figure align-default">
-<img alt="_images/track_movement_demo.gif" src="_images/track_movement_demo.gif" />
+<a class="reference internal image-reference" href="_images/track_movement_demo.gif"><img alt="_images/track_movement_demo.gif" src="_images/track_movement_demo.gif" style="width: 295.1px; height: 135.20000000000002px;" /></a>
 </div>
 <p>Track movement depends on how your UV has been set up. UV influences speed,
 direction and how the belt is drawn on the model.</p>
@@ -299,7 +299,7 @@ physics, let’s use this simple scene for the tutorial.</p>
 <p>Now drag your vehicle model to the scene for us to configure. This is the default
 template that comes in the example assets.</p>
 <div class="figure align-default">
-<img alt="_images/mbt_example_model.jpg" src="_images/mbt_example_model.jpg" />
+<img alt="_images/ariete_model1.jpg" src="_images/ariete_model1.jpg" />
 </div>
 <div class="section" id="vehicle-hierarchy">
 <span id="id1"></span><h3>Vehicle Hierarchy<a class="headerlink" href="#vehicle-hierarchy" title="Permalink to this headline">¶</a></h3>
@@ -307,17 +307,17 @@ template that comes in the example assets.</p>
 wheel hierarchy is similar to any standard Unity vehicle, you need to have empty
 gameObjects for physics and another gameObject like meshRenderer for the wheel model.</p>
 <div class="figure align-default">
-<img alt="_images/mbt_wheels_hierarchy.jpg" src="_images/mbt_wheels_hierarchy.jpg" />
+<a class="reference internal image-reference" href="_images/mbt_wheels_hierarchy.jpg"><img alt="_images/mbt_wheels_hierarchy.jpg" src="_images/mbt_wheels_hierarchy.jpg" style="width: 489.83px; height: 508.81px;" /></a>
 </div>
 <div class="figure align-default">
-<img alt="_images/mbt_wheels_example_hierarchy.png" src="_images/mbt_wheels_example_hierarchy.png" />
+<a class="reference internal image-reference" href="_images/mbt_wheels_example_hierarchy.png"><img alt="_images/mbt_wheels_example_hierarchy.png" src="_images/mbt_wheels_example_hierarchy.png" style="width: 489.0px; height: 412.5px;" /></a>
 </div>
 <p>The first and last wheel on each side don’t need to go with the others as they don’t
 have physics, of course it depends on your vehicle, but let’s focus on this one. These
 wheels only need to keep up with the rotation of the others and that’s why they have a
 different configuration and we don’t need to modify anything here.</p>
 <div class="figure align-default">
-<img alt="_images/mbt_wheels_example_hierarchy_2.jpg" src="_images/mbt_wheels_example_hierarchy_2.jpg" />
+<img alt="_images/mbt_wheels_additional_wheels.jpg" src="_images/mbt_wheels_additional_wheels.jpg" />
 </div>
 </div>
 <div class="section" id="minimum-functional">
@@ -329,35 +329,35 @@ different configuration and we don’t need to modify anything here.</p>
 <p>For your MBT to have physics add the <code class="docutils literal notranslate"><span class="pre">MMV_MBT_Vehicle</span></code> component to your <strong>GameObject
 root of the vehicle</strong></p>
 <div class="figure align-default">
-<img alt="_images/sample_vehicle_add_component.jpg" src="_images/sample_vehicle_add_component.jpg" />
+<img alt="_images/add_vehicle_component.jpg" src="_images/add_vehicle_component.jpg" />
 </div>
 <p>When the component is added, many settings will already be adjusted to make your life
 easier, including a <strong>RigidBody</strong> component will be added and its mass will be set to 1000,
 the default setting.</p>
 <div class="figure align-default">
-<img alt="_images/sample_mmv_mbt_component.jpg" src="_images/sample_mmv_mbt_component.jpg" />
+<a class="reference internal image-reference" href="_images/sample_mbt_component.jpg"><img alt="_images/sample_mbt_component.jpg" src="_images/sample_mbt_component.jpg" style="width: 288.0px; height: 514.5px;" /></a>
 </div>
 <p>To see it work we must add the wheels to our wheel manager. Let’s select the empty gameObjects
 that represent the wheel colliders.</p>
 <div class="figure align-default">
-<img alt="_images/mbt_wheel_colliders.jpg" src="_images/mbt_wheel_colliders.jpg" />
+<img alt="_images/mbt_wheel_colliders_hierarchy_default.jpg" src="_images/mbt_wheel_colliders_hierarchy_default.jpg" />
 </div>
 <p>You can add your wheels here, be careful to separate the sides correctly (right and left).</p>
 <div class="figure align-default">
-<img alt="_images/mbt_vehicle_component_wheels.jpg" src="_images/mbt_vehicle_component_wheels.jpg" />
+<a class="reference internal image-reference" href="_images/mbt_wheels_wheels_empties.jpg"><img alt="_images/mbt_wheels_wheels_empties.jpg" src="_images/mbt_wheels_wheels_empties.jpg" style="width: 300.29999999999995px; height: 586.5999999999999px;" /></a>
 </div>
 <p>Once you have added the objects for the wheel colliders, it will look something like this.
 We’ll leave the other spaces empty, we don’t need them now.</p>
 <div class="figure align-default">
-<img alt="_images/mbt_vehicle_component_wheels_added.jpg" src="_images/mbt_vehicle_component_wheels_added.jpg" />
+<img alt="_images/mbt_wheels_wheels.jpg" src="_images/mbt_wheels_wheels.jpg" />
 </div>
 <p>That’s enough for our vehicle to have physics. If your <strong>Gizmos</strong> are active and the vehicle is
 selected you will be able to see the representation of the wheels.</p>
 <div class="figure align-default">
-<img alt="_images/mbt_physics_representation.jpg" src="_images/mbt_physics_representation.jpg" />
+<img alt="_images/mbt_physics_simplifiqued_configured.jpg" src="_images/mbt_physics_simplifiqued_configured.jpg" />
 </div>
 <div class="figure align-default">
-<img alt="_images/mbt_physics_demo.gif" src="_images/mbt_physics_demo.gif" />
+<a class="reference internal image-reference" href="_images/mbt_physics_demo.gif"><img alt="_images/mbt_physics_demo.gif" src="_images/mbt_physics_demo.gif" style="width: 416.0px; height: 234.0px;" /></a>
 </div>
 </div>
 <div class="section" id="adding-a-simple-controller">
@@ -388,12 +388,15 @@ control and camera, have fun.</p>
 <div class="section" id="engine">
 <h3>Engine<a class="headerlink" href="#engine" title="Permalink to this headline">¶</a></h3>
 <p>An important module for making wheel acceleration and brake calculations.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="_images/mbt_engine.jpg"><img alt="_images/mbt_engine.jpg" src="_images/mbt_engine.jpg" style="width: 293.0px; height: 463.0px;" /></a>
+</div>
 <div class="section" id="acceleration">
 <h4>Acceleration<a class="headerlink" href="#acceleration" title="Permalink to this headline">¶</a></h4>
 <p>Configure to make the vehicle more agile, control the maximum speed, acceleration speed, brake
 force and maximum rotation speed.</p>
 <div class="figure align-default">
-<img alt="_images/mbt_engine_module_2.jpg" src="_images/mbt_engine_module_2.jpg" />
+<img alt="_images/mbt_engine_acceleration.jpg" src="_images/mbt_engine_acceleration.jpg" />
 </div>
 <p>Acceleration</p>
 <blockquote>
@@ -421,7 +424,7 @@ force and maximum rotation speed.</p>
 <h4>Brake<a class="headerlink" href="#brake" title="Permalink to this headline">¶</a></h4>
 <p>Configure the vehicle brake.</p>
 <div class="figure align-default">
-<img alt="_images/mbt_engine_module_3.jpg" src="_images/mbt_engine_module_3.jpg" />
+<img alt="_images/mbt_engine_brake.jpg" src="_images/mbt_engine_brake.jpg" />
 </div>
 <p>Brake</p>
 <blockquote>
@@ -437,7 +440,7 @@ the gear change is done by automatic. The higher the current gear, the higher th
 and the lower the acceleration force, making it harder to climb hills. The gear shift
 also influences the engine sound.</p>
 <div class="figure align-default">
-<img alt="_images/mbt_engine_module_4.jpg" src="_images/mbt_engine_module_4.jpg" />
+<img alt="_images/mbt_engine_gears.jpg" src="_images/mbt_engine_gears.jpg" />
 </div>
 <p>Gear Settings</p>
 <blockquote>
@@ -453,8 +456,7 @@ also influences the engine sound.</p>
 </ul>
 <p><strong>Example</strong></p>
 <div class="figure align-default">
-<img alt="_images/gear_bar.png" src="_images/gear_bar.png" />
-</div>
+<img alt="_images/vehicle_gear_bar_example.svg" src="_images/vehicle_gear_bar_example.svg" /></div>
 </div></blockquote>
 <p>Backward Gears</p>
 <blockquote>
@@ -468,7 +470,7 @@ also influences the engine sound.</p>
 <h4>Engine Sound<a class="headerlink" href="#engine-sound" title="Permalink to this headline">¶</a></h4>
 <p>Simulate engine sound with gearshift effects</p>
 <div class="figure align-default">
-<img alt="_images/mbt_engine_module_5.jpg" src="_images/mbt_engine_module_5.jpg" />
+<img alt="_images/mbt_engine_sound.jpg" src="_images/mbt_engine_sound.jpg" />
 </div>
 <ul class="simple">
 <li><p><strong>audio source:</strong> audio player responsible for reproducing the engine sound.</p></li>
@@ -483,7 +485,7 @@ also influences the engine sound.</p>
 <h3>Turret<a class="headerlink" href="#turret" title="Permalink to this headline">¶</a></h3>
 <p>Responsible for controlling the turret and cannon to aim at targets.</p>
 <div class="figure align-default">
-<img alt="_images/mbt_turret_module.jpg" src="_images/mbt_turret_module.jpg" />
+<img alt="_images/mbt_turret.jpg" src="_images/mbt_turret.jpg" />
 </div>
 <p>Transforms</p>
 <blockquote>
@@ -510,7 +512,7 @@ also influences the engine sound.</p>
 <h3>Wheels<a class="headerlink" href="#wheels" title="Permalink to this headline">¶</a></h3>
 <p>Apply physics to wheels and conveyor movement.</p>
 <div class="figure align-default">
-<img alt="_images/mbt_wheels_module.jpg" src="_images/mbt_wheels_module.jpg" />
+<a class="reference internal image-reference" href="_images/mbt_wheels.jpg"><img alt="_images/mbt_wheels.jpg" src="_images/mbt_wheels.jpg" style="width: 411.59999999999997px; height: 549.5px;" /></a>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -604,7 +606,7 @@ will be controlled by the wheel system itself.</p>
 <img alt="_images/vehicle_slope_deceleration.svg" src="_images/vehicle_slope_deceleration.svg" /></div>
 <p><strong>Center of mass</strong></p>
 <div class="figure align-default">
-<img alt="_images/mbt_center_of_mass.jpg" src="_images/mbt_center_of_mass.jpg" />
+<img alt="_images/vehicle_center_of_mass.jpg" src="_images/vehicle_center_of_mass.jpg" />
 </div>
 </div>
 </div>

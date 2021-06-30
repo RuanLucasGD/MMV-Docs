@@ -12,7 +12,7 @@ or understand, please send your feedback to help us make MMV better every day.
 Importing vehicle model
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: img/3d_view_blender_model.png
+.. figure:: img/importing_models/ariete_model.jpg
 
 .. warning::
 
@@ -35,7 +35,8 @@ To create a complete vehicle, you need 8 components, but only 3 are required:
 
 You can follow this example hierarchy to organize your models:
 
-.. figure:: img/mbt_model_hierarchy.png
+.. figure:: img/configuring_vehicle/mbt_model_hierarchy.jpg
+    :scale: 70%
 
 | **Blue - Empties**
 | **Pink - Meshs**
@@ -55,9 +56,9 @@ the **Z Axis to forward** and and **scale = 1**.
     use Blender (or any poorly configured model) as the axes may be in the 
     wrong directions.
 
-.. figure:: img/mbt_orientation_incorretly.jpg
+.. figure:: img/configuring_vehicle/mbt_orientation_incorretly.jpg
 
-.. figure:: img/mbt_orientation_corretly.jpg
+.. figure:: img/configuring_vehicle/mbt_orientation_corretly.jpg
 
 Exporting complex models with armor from Blender to Unity with identity 
 transformations is a bit complicated, luckily there is a `plugin for Blender 
@@ -73,32 +74,33 @@ export in a simple way, I recommend you use it to not have so many problems.
 After installing the plugin, you will have this option along with the other 
 export options.
 
-.. figure:: img/export_to_unity_plugin_demonstration.jpg
+.. figure:: img/configuring_vehicle/export_to_unity_plugin_demonstration.jpg
 
 .. _Tracks model:
 
 Tracks
 ------
 
-.. figure:: img/mbt_tracks_demonstration.png
+.. figure:: img/configuring_vehicle/mbt_tracks_demonstration.jpg
 
 For treadmill vehicles, there must be 2 models, left treadmill and right 
 treadmill that need to be attached to a skeleton. The skeleton must have 
 bones that run through the entire mat, one bone per wheel.
 
-.. figure:: img/3d_view_blender_tracks_structure.png
+.. figure:: img/importing_models/mbt_tracks_structure.jpg
 
 These settings are important because the bones will simulate the movement 
 of the conveyor, each bone will follow the position of the wheels (via 
 script, no configuration is needed for this in the model), and with this 
 the conveyor will follow the position of the wheels .
 
-.. figure:: img/track_movement_demo.gif
+.. figure:: img/configuring_vehicle/track_movement_demo.gif
+    :scale: 130%
 
 Track movement depends on how your UV has been set up. UV influences speed, 
 direction and how the belt is drawn on the model.
 
-.. figure:: img/mbt_track_uv.jpg
+.. figure:: img/configuring_vehicle/mbt_track_uv.jpg
 
 Simple Vehicle
 ~~~~~~~~~~~~~~~
@@ -106,13 +108,12 @@ Simple Vehicle
 For starters, it's important that you have a test scene to be able to simulate 
 physics, let's use this simple scene for the tutorial.
 
-.. figure:: img/sample_environment.jpg
+.. figure:: img/configuring_vehicle/sample_environment.jpg
 
 Now drag your vehicle model to the scene for us to configure. This is the default 
 template that comes in the example assets.
 
-.. figure:: img/mbt_example_model.jpg
-
+.. figure:: img/configuring_vehicle/ariete_model.jpg
 .. _Vehicle hierarchy:
 
 Vehicle Hierarchy
@@ -122,16 +123,18 @@ Before adding the control and physics scripts we need to configure the wheels, t
 wheel hierarchy is similar to any standard Unity vehicle, you need to have empty 
 gameObjects for physics and another gameObject like meshRenderer for the wheel model.
 
-.. figure:: img/mbt_wheels_hierarchy.jpg
+.. figure:: img/configuring_vehicle/mbt_wheels_hierarchy.jpg
+    :scale: 73%
 
-.. figure:: img/mbt_wheels_example_hierarchy.png
+.. figure:: img/configuring_vehicle/mbt_wheels_example_hierarchy.png
+    :scale: 50%
 
 The first and last wheel on each side don't need to go with the others as they don't 
 have physics, of course it depends on your vehicle, but let's focus on this one. These 
 wheels only need to keep up with the rotation of the others and that's why they have a 
 different configuration and we don't need to modify anything here.
 
-.. figure:: img/mbt_wheels_example_hierarchy_2.jpg
+.. figure:: img/configuring_vehicle/mbt_wheels_additional_wheels.jpg
 
 .. _Minimum functional:
 
@@ -140,39 +143,42 @@ Minimum functional
 
 Make sure the model has some collider for your body.
 
-.. figure:: img/sample_vehicle_collisor.jpg
+.. figure:: img/configuring_vehicle/sample_vehicle_collisor.jpg
 
 For your MBT to have physics add the ``MMV_MBT_Vehicle`` component to your **GameObject 
 root of the vehicle**
 
-.. figure:: img/sample_vehicle_add_component.jpg
+.. figure:: img/configuring_vehicle/add_vehicle_component.jpg
 
 When the component is added, many settings will already be adjusted to make your life 
 easier, including a **RigidBody** component will be added and its mass will be set to 1000, 
 the default setting.
 
-.. figure:: img/sample_mmv_mbt_component.jpg
+.. figure:: img/configuring_vehicle/sample_mbt_component.jpg
+    :scale: 50%
 
 To see it work we must add the wheels to our wheel manager. Let's select the empty gameObjects 
 that represent the wheel colliders.
 
-.. figure:: img/mbt_wheel_colliders.jpg
+.. figure:: img/configuring_vehicle/mbt_wheel_colliders_hierarchy_default.jpg
 
 You can add your wheels here, be careful to separate the sides correctly (right and left).
 
-.. figure:: img/mbt_vehicle_component_wheels.jpg
+.. figure:: img/configuring_vehicle/modules/mbt_wheels_wheels_empties.jpg
+    :scale: 70%
 
 Once you have added the objects for the wheel colliders, it will look something like this. 
 We'll leave the other spaces empty, we don't need them now.
 
-.. figure:: img/mbt_vehicle_component_wheels_added.jpg
+.. figure:: img/configuring_vehicle/modules/mbt_wheels_wheels.jpg
 
 That's enough for our vehicle to have physics. If your **Gizmos** are active and the vehicle is 
 selected you will be able to see the representation of the wheels.
 
-.. figure:: img/mbt_physics_representation.jpg
+.. figure:: img/configuring_vehicle/mbt_physics_simplifiqued_configured.jpg
 
-.. figure:: img/mbt_physics_demo.gif
+.. figure:: img/configuring_vehicle/mbt_physics_demo.gif
+    :scale: 130%
 
 Adding a Simple Controller
 --------------------------
@@ -180,17 +186,17 @@ Adding a Simple Controller
 To be able to control your vehicle, add this component, it already gives you all the necessary 
 inputs to control your vehicle using keyboard, mouse and gamepad.
 
-.. figure:: img/adding_controll_component.jpg
+.. figure:: img/configuring_vehicle/adding_controll_component.jpg
 
 Add the Axis of your project inputs to make your vehicle move. Also add some key or button on 
 the gamepad for the brake. You don't need to have both inputs configured, you can control the 
 vehicle with just one input type.
 
-.. figure:: img/controll_vehicle_component.jpg
+.. figure:: img/configuring_vehicle/controll_vehicle_component.jpg
 
 Once configured we can see the controls working.
 
-.. figure:: img/mbt_simple_movement_demo.gif
+.. figure:: img/configuring_vehicle/mbt_simple_movement_demo.gif
 
 Advanced Vehicle Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -205,13 +211,16 @@ Engine
 
 An important module for making wheel acceleration and brake calculations.
 
+.. figure:: img/configuring_vehicle/modules/mbt_engine.jpg
+    :scale: 50%
+
 Acceleration
 ............
 
 Configure to make the vehicle more agile, control the maximum speed, acceleration speed, brake 
 force and maximum rotation speed.
 
-.. figure:: img/mbt_engine_module_2.jpg
+.. figure:: img/configuring_vehicle/modules/mbt_engine_acceleration.jpg
 
 Acceleration
 
@@ -233,7 +242,7 @@ Brake
 
 Configure the vehicle brake.
 
-.. figure:: img/mbt_engine_module_3.jpg
+.. figure:: img/configuring_vehicle/modules/mbt_engine_brake.jpg
 
 Brake
 
@@ -247,7 +256,7 @@ the gear change is done by automatic. The higher the current gear, the higher th
 and the lower the acceleration force, making it harder to climb hills. The gear shift 
 also influences the engine sound.
 
-.. figure:: img/mbt_engine_module_4.jpg
+.. figure:: img/configuring_vehicle/modules/mbt_engine_gears.jpg
 
 Gear Settings
     
@@ -260,7 +269,7 @@ Forward Gears
 
     **Example**
 
-    .. figure:: img/gear_bar.png
+    .. figure:: img/configuring_vehicle/vehicle_gear_bar_example.svg
 
 Backward Gears
 
@@ -272,7 +281,7 @@ Engine Sound
 
 Simulate engine sound with gearshift effects
 
-.. figure:: img/mbt_engine_module_5.jpg
+.. figure:: img/configuring_vehicle/modules/mbt_engine_sound.jpg
 
 * **audio source:** audio player responsible for reproducing the engine sound.
 * **audio clip:** engine sound audio clip.
@@ -285,7 +294,7 @@ Turret
 
 Responsible for controlling the turret and cannon to aim at targets.
 
-.. figure:: img/mbt_turret_module.jpg
+.. figure:: img/configuring_vehicle/mbt_turret.jpg
 
 Transforms
 
@@ -306,7 +315,8 @@ Wheels
 
 Apply physics to wheels and conveyor movement.
 
-.. figure:: img/mbt_wheels_module.jpg
+.. figure:: img/configuring_vehicle/modules/mbt_wheels.jpg
+    :scale: 70%
 
 .. note::
     
@@ -388,9 +398,9 @@ Control the effect of gravity on the vehicle
 
 **Slope deceleration**
 
-.. figure:: img/vehicle_slope_deceleration.svg
+.. figure:: img/configuring_vehicle/vehicle_slope_deceleration.svg
 
 **Center of mass**
 
-.. figure:: img/mbt_center_of_mass.jpg
+.. figure:: img/configuring_vehicle/vehicle_center_of_mass.jpg
 

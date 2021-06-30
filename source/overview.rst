@@ -15,7 +15,7 @@ Below is a diagram that demonstrates how these modules are wired. The engine mus
 and brake force to the wheel manager. The manager must apply the suspension force and use the acceleration and brake 
 forces on the wheels.
 
-.. figure:: /img/mmv_overview_diagram.png
+.. figure:: /img/overview/mbt_overview_diagram.jpg
 
 There are specific forces for each side, as each track has its own acceleration and brake, increasing the force on 
 one side and decreasing it on the other can cause the vehicle to rotate, thus being a form of steering. How the move 
@@ -47,12 +47,12 @@ The movement consists of the more you accelerate, the less you should brake (or 
 accelerate). By changing the acceleration weights on each side we can change the direction in which the vehicle moves 
 or turns it.
 
-.. figure:: img/mbt_vehicle_movement.png
+.. figure:: img/overview/mbt_directions_demo.svg
 
 When configuring your vehicle, remember that the amount of front and side friction, amount of acceleration, acceleration 
 speed and brake force influence the rotation speed of the vehicle
 
-.. figure:: img/mbt_movement_example.gif
+.. figure:: img/overview/mbt_movement_demo.gif
 
 motion representation
 
@@ -66,7 +66,7 @@ the cannon aim at the target
 The aim is very precise and can hit targets even if the vehicle is at difficult angles and the rotation speed is always 
 constant.
 
-.. figure:: img/mbt_cannon_angle_demonstration.png
+.. figure:: img/overview/vehicle_angle_gun_demo.svg
 
 The tower has no rotation limit, 360° angle
 
@@ -77,7 +77,7 @@ The default camera controller already tells the turret where it should aim, and 
 front of the cannon to know where it's aiming at the moment, it works the same way we see in games like world of tanks or war 
 thunder.
 
-.. figure:: /img/gun_control_aim_example.png
+.. figure:: img/overview/gun_aim_example.jpg
 
 To make this marker work it was necessary to do a little more than take the cannon's front position using raycasts and convert 
 it to screen space, that's because Unity can't return the exact position when the forward distance is too far, the values come 
@@ -86,5 +86,4 @@ To get around this, a raycast was done from the camera to the position of the fr
 ``Quaternion.LookAt`` to that position. The forward vector of this ``(lookAt * Vector3.forward) + cameraPos`` converted to screen 
 space was the form used to get the position of the cannon's crosshair marker.
 
-.. figure:: /img/mmv_aim_marker_ui.png
-
+.. figure:: /img/overview/cannon_ui_marker.svg

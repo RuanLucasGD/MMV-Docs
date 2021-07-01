@@ -34,7 +34,9 @@ If your project inputs are the defaults, this is already capable of making the c
 
 .. warning::
 
-    Before starting your game, be sure to move your vehicle to the Ignore Raycast layer.
+    Before starting the game, be sure to move the vehicle to the ``Ignore Raycast`` layer 
+    **(or any other layer that is different from the layer used by the crosshairs that 
+    will be explained below)**
 
     .. figure:: img/configuring_camera/vehicle_ignore_layer.jpg
 

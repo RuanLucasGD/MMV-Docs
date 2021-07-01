@@ -18,3 +18,4 @@ all the components that are part of this system.
 
     overview.rst
     creating_vehicle.rst
+    configuring_camera.rst

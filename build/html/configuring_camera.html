@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>MMV Camera Control &mdash; MMV Modern Military Vehicle System  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Create your own MBT Vehicle" href="creating_vehicle.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MMV Modern Military Vehicle System
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_vehicle.html">Create your own MBT Vehicle</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MMV Camera Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-camera">Adding Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-configuration">Advanced Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#controll-inputs">Controll inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-position">Camera position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-zoom">Camera zoom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-crosshair">Camera crosshair</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MMV Modern Military Vehicle System</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>MMV Camera Control</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/configuring_camera.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mmv-camera-control">
+<h1>MMV Camera Control<a class="headerlink" href="#mmv-camera-control" title="Permalink to this headline">¶</a></h1>
+<p>The MMV comes with a standard third-person camera that can be controlled
+with a mouse or gamepad to guide the vehicle’s sights.</p>
+<div class="figure align-default">
+<img alt="_images/camera_movement_demo.gif" src="_images/camera_movement_demo.gif" />
+</div>
+<div class="section" id="adding-camera">
+<h2>Adding Camera<a class="headerlink" href="#adding-camera" title="Permalink to this headline">¶</a></h2>
+<p>To have a camera controller, just have a common camera in your scene and
+add the component <code class="docutils literal notranslate"><span class="pre">MMV_CameraController</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="_images/adding_camera_controller.jpg"><img alt="_images/adding_camera_controller.jpg" src="_images/adding_camera_controller.jpg" style="width: 329.7px; height: 465.49999999999994px;" /></a>
+</div>
+<p>The camera controller needs a vehicle to track and send the target’s position
+to the tower controller. Add your vehicle here:</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="_images/camera_controller_target_null.jpg"><img alt="_images/camera_controller_target_null.jpg" src="_images/camera_controller_target_null.jpg" style="width: 305.2px; height: 49.0px;" /></a>
+</div>
+<p>when added, a series of options will appear so that you can adjust the
+camera as you see fit.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="_images/camera_controller_component.jpg"><img alt="_images/camera_controller_component.jpg" src="_images/camera_controller_component.jpg" style="width: 357.7px; height: 410.2px;" /></a>
+</div>
+<p>If your project inputs are the defaults, this is already capable of making the camera work already.</p>
+<div class="figure align-default">
+<img alt="_images/camera_controller_inputs_1.jpg" src="_images/camera_controller_inputs_1.jpg" />
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before starting your game, be sure to move your vehicle to the Ignore Raycast layer.</p>
+<div class="figure align-default">
+<img alt="_images/vehicle_ignore_layer.jpg" src="_images/vehicle_ignore_layer.jpg" />
+</div>
+</div>
+<p>Okay, your camera is now functional!</p>
+<div class="figure align-default">
+<img alt="_images/camera_example.jpg" src="_images/camera_example.jpg" />
+</div>
+</div>
+<div class="section" id="advanced-configuration">
+<h2>Advanced Configuration<a class="headerlink" href="#advanced-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Review of all controller properties</p>
+<div class="section" id="controll-inputs">
+<h3>Controll inputs<a class="headerlink" href="#controll-inputs" title="Permalink to this headline">¶</a></h3>
+<p>Use Unity’s input settings, configure your Axis or add some new ones to the gamepad</p>
+<div class="figure align-default">
+<img alt="_images/camera_controller_inputs_1.jpg" src="_images/camera_controller_inputs_1.jpg" />
+</div>
+<ul class="simple">
+<li><p><strong>horizontal Axis:</strong> mouse horizontal movement input (Mouse/Gamepad-Joystick X).</p></li>
+<li><p><strong>vertical Axis:</strong> mouse vertical movement input (Mouse/Gamepad-Joystick Y).</p></li>
+<li><p><strong>zoom key:</strong> key to activate the camera’s zoom (to apply zoom press the chosen key and move the Mouse/Gamepad-Joystick forwards or backwards).</p></li>
+<li><p><strong>invert horizontal axis:</strong> reverses Mouse/Gamepad horizontal movement speed.</p></li>
+<li><p><strong>invert vertical axis:</strong> reverses Mouse/Gamepad vertical movement speed.</p></li>
+</ul>
+</div>
+<div class="section" id="camera-position">
+<h3>Camera position<a class="headerlink" href="#camera-position" title="Permalink to this headline">¶</a></h3>
+<p>Camera location, view control</p>
+<div class="figure align-default">
+<img alt="_images/camera_controller_position.jpg" src="_images/camera_controller_position.jpg" />
+</div>
+<ul class="simple">
+<li><p><strong>camera height:</strong> the height that the camera will be relative to the vehicle.</p></li>
+<li><p><strong>max vertical angle:</strong> maximum angle of vertical rotation that the camera can be.</p></li>
+<li><p><strong>min vertical angle:</strong> maximum angle of vertical rotation that the camera can be.</p></li>
+<li><p><strong>rotation speed:</strong> camera rotation speed.</p></li>
+</ul>
+</div>
+<div class="section" id="camera-zoom">
+<h3>Camera zoom<a class="headerlink" href="#camera-zoom" title="Permalink to this headline">¶</a></h3>
+<p>Move the camera closer or farther away from the vehicle</p>
+<div class="figure align-default">
+<img alt="_images/camera_controller_zoom.jpg" src="_images/camera_controller_zoom.jpg" />
+</div>
+<ul class="simple">
+<li><p><strong>max camera distance:</strong> the maximum distance the camera can be from the vehicle.</p></li>
+<li><p><strong>min camera distance:</strong> the minimum distance that the camera can be from the vehicle.</p></li>
+<li><p><strong>camera zoom speed:</strong> speed the camera moves forward or backward while zooming.</p></li>
+</ul>
+</div>
+<div class="section" id="camera-crosshair">
+<h3>Camera crosshair<a class="headerlink" href="#camera-crosshair" title="Permalink to this headline">¶</a></h3>
+<p>Target detection.</p>
+<div class="figure align-default">
+<img alt="_images/camera_controller_crosshair.jpg" src="_images/camera_controller_crosshair.jpg" />
+</div>
+<ul class="simple">
+<li><p><strong>max crosshair distance:</strong> The maximum distance the camera can see to detect targets.</p></li>
+<li><p><strong>collision layer:</strong> layer where all objects that can serve as obstacles are found (collision objects).</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The layer of <strong>your vehicle (player)</strong> must not be the same as the <code class="docutils literal notranslate"><span class="pre">collision</span> <span class="pre">layer</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="creating_vehicle.html" class="btn btn-neutral float-left" title="Create your own MBT Vehicle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Ruan Lucas.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

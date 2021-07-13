@@ -1,3 +1,5 @@
+.. _Creating Vehicle:
+
 Create your own MBT Vehicle
 ============================================
 
@@ -378,7 +380,7 @@ Additional wheels renderers (left and right)
 
 .. figure:: img/configuring_vehicle/modules/mbt_wheels_additional_wheels.jpg
 
-If you read `Minimum functional`_ you must have noticed that the first and last wheel on each 
+If you read `Vehicle Hierarchy`_ you must have noticed that the first and last wheel on each 
 side does not follow the same pattern as the others (of course it depends on the vehicle), in 
 a common tank like the one since asset, it has no physics in these wheels, they just run together 
 with the too much. In this case, we add these additional wheels that do not have physics to this 

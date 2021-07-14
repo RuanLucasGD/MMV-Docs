@@ -120,6 +120,12 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stability">Stability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shooter">Shooter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#shot">Shot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#effects">Effects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#player-shooting-control">Player Shooting Control</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -628,6 +634,60 @@ will be controlled by the wheel system itself.</p>
 <p><strong>Center of mass</strong></p>
 <div class="figure align-default">
 <img alt="_images/vehicle_center_of_mass.jpg" src="_images/vehicle_center_of_mass.jpg" />
+</div>
+</div>
+<div class="section" id="shooter">
+<span id="mmv-shooter"></span><h3>Shooter<a class="headerlink" href="#shooter" title="Permalink to this headline">¶</a></h3>
+<p>Control vehicle shot, blast particles, recoil and other shooting options.
+Add this <code class="docutils literal notranslate"><span class="pre">MMV_Shooter</span></code> component to your vehicle to be able to shoot. Remember
+that you can add a component that controls the <code class="docutils literal notranslate"><span class="pre">MMV_Shooter</span></code> in order to shoot</p>
+<div class="figure align-default">
+<img alt="_images/shooter_demo.jpg" src="_images/shooter_demo.jpg" />
+</div>
+<p>In order to configure your shooting controller you need to have a gameObject to spawn the shots at the tip of your cannon.</p>
+<div class="figure align-default">
+<img alt="_images/vehicle_spawn_cannon.jpg" src="_images/vehicle_spawn_cannon.jpg" />
+</div>
+<div class="section" id="shot">
+<h4>Shot<a class="headerlink" href="#shot" title="Permalink to this headline">¶</a></h4>
+<p>add your spawn in the <strong>Shot -&gt; Spawner</strong> component and a series of shot settings will open for you.</p>
+<div class="figure align-default">
+<img alt="_images/shooter_shot.jpg" src="_images/shooter_shot.jpg" />
+</div>
+<ul class="simple">
+<li><p><strong>spawner:</strong> The object in charge of spawning the shots.</p></li>
+<li><p><strong>bullet</strong> The prefab of the shooting projectile, this projectile needs to have the <code class="docutils literal notranslate"><span class="pre">MMV_Bullet</span></code> component to work.</p></li>
+<li><p><strong>ignore layer:</strong> The shooting projectile MUST be from a different layer than the other collision game objects, add the projectile layer here. Recommended Skip <em>Raycast layer</em>.</p></li>
+<li><p><strong>bullet velocity:</strong> The projectile movement speed, beware of very high speeds, the collision system may sometimes fail.</p></li>
+<li><p><strong>explosion force:</strong> Apply blast force to nearby objects causing them to fly away with projectile impact.</p></li>
+<li><p><strong>explosion range:</strong> Only objects within that radius will be thrown away with the force of the explosion.</p></li>
+<li><p><strong>reload time:</strong> The waiting time from one shot to another.</p></li>
+<li><p><strong>recoil:</strong> Shot force, makes you push the vehicle with each shot.</p></li>
+</ul>
+</div>
+<div class="section" id="effects">
+<h4>Effects<a class="headerlink" href="#effects" title="Permalink to this headline">¶</a></h4>
+<p>Add the explosion particles from the cannon firing. Example, fire and smoke.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="_images/shooter_effects.jpg"><img alt="_images/shooter_effects.jpg" src="_images/shooter_effects.jpg" style="width: 347.2px; height: 82.6px;" /></a>
+</div>
+<p>The sound of the cannon firing, add the AudioSource of the firing to have these options.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="_images/shooter_sound.jpg"><img alt="_images/shooter_sound.jpg" src="_images/shooter_sound.jpg" style="width: 346.5px; height: 81.89999999999999px;" /></a>
+</div>
+<ul class="simple">
+<li><p><strong>audio source:</strong> The audio component that will be used to reproduce the sound of the shot.</p></li>
+<li><p><strong>audio life time:</strong> The length of the audio of the shot is recommended to leave as much as possible. (the maximum is the reload time of the shot).</p></li>
+<li><p><strong>clip:</strong> The sound of the shot fire.</p></li>
+</ul>
+</div>
+<div class="section" id="player-shooting-control">
+<h4>Player Shooting Control<a class="headerlink" href="#player-shooting-control" title="Permalink to this headline">¶</a></h4>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">MMV_ShootController</span></code> component to control the <code class="docutils literal notranslate"><span class="pre">MMV_Shooter</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="_images/shooter_player_controller.jpg"><img alt="_images/shooter_player_controller.jpg" src="_images/shooter_player_controller.jpg" style="width: 341.59999999999997px; height: 95.89999999999999px;" /></a>
+</div>
+<p>You can add the fire keys here and your <code class="docutils literal notranslate"><span class="pre">MMV_Shooter</span></code> will now work.</p>
 </div>
 </div>
 </div>

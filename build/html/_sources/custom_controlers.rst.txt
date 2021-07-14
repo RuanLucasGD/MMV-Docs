@@ -121,6 +121,7 @@ and it will be working, just pay attention to the position of your camera so tha
 
             // controlling the vehicle
             vehicle.PlayerInputs(vertical, horizontal, isBraking);
+            vehicle.TurretTargetPosition = turretTarget;
         }
     }
 
@@ -232,8 +233,8 @@ Fire Controller
 ~~~~~~~~~~~~~~~
 
 The fire control works in a similar way as a vehicle controller, access the fire component and 
-execute the fire, just like that. If you haven't seen about shooting control, read MMV_Shooter.
-
+execute the fire, just like that. If you haven't seen about shooting control, read :ref:`MMV_Shooter`.
+ 
 .. code-block:: csharp
 
     using MMV;
@@ -256,3 +257,7 @@ execute the fire, just like that. If you haven't seen about shooting control, re
             }
         }
     }
+
+Demo:
+
+.. figure:: img/custom_controllers/nav_mesh_ai_demo.gif

@@ -418,3 +418,64 @@ Control the effect of gravity on the vehicle
 
 .. figure:: img/configuring_vehicle/vehicle_center_of_mass.jpg
 
+.. _MMV_Shooter:
+
+Shooter
+------------
+
+Control vehicle shot, blast particles, recoil and other shooting options.
+Add this ``MMV_Shooter`` component to your vehicle to be able to shoot. Remember 
+that you can add a component that controls the ``MMV_Shooter`` in order to shoot
+
+.. figure:: img/configuring_vehicle/shooter_demo.jpg
+
+In order to configure your shooting controller you need to have a gameObject to spawn the shots at the tip of your cannon.
+
+.. figure:: img/configuring_vehicle/vehicle_spawn_cannon.jpg
+
+Shot
+....
+add your spawn in the **Shot -> Spawner** component and a series of shot settings will open for you.
+
+.. figure:: img/configuring_vehicle/shooter_shot.jpg
+
+* **spawner:** The object in charge of spawning the shots.
+* **bullet** The prefab of the shooting projectile, this projectile needs to have the ``MMV_Bullet`` component to work.
+* **ignore layer:** The shooting projectile MUST be from a different layer than the other collision game objects, add the projectile layer here. Recommended Skip *Raycast layer*.
+* **bullet velocity:** The projectile movement speed, beware of very high speeds, the collision system may sometimes fail.
+* **explosion force:** Apply blast force to nearby objects causing them to fly away with projectile impact.
+* **explosion range:** Only objects within that radius will be thrown away with the force of the explosion.
+* **reload time:** The waiting time from one shot to another.
+* **recoil:** Shot force, makes you push the vehicle with each shot.
+
+Effects
+.......
+
+Add the explosion particles from the cannon firing. Example, fire and smoke.
+
+.. figure:: img/configuring_vehicle/shooter_effects.jpg
+    :scale: 70%
+
+The sound of the cannon firing, add the AudioSource of the firing to have these options.
+
+.. figure:: img/configuring_vehicle/shooter_sound.jpg
+    :scale: 70%
+
+* **audio source:** The audio component that will be used to reproduce the sound of the shot.
+* **audio life time:** The length of the audio of the shot is recommended to leave as much as possible. (the maximum is the reload time of the shot).
+* **clip:** The sound of the shot fire.
+
+.. 
+
+Player Shooting Control
+.......................
+
+Add the ``MMV_ShootController`` component to control the ``MMV_Shooter``.
+
+.. figure:: img/configuring_vehicle/shooter_player_controller.jpg 
+    :scale: 70%
+    
+You can add the fire keys here and your ``MMV_Shooter`` will now work.
+
+
+

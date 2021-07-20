@@ -126,6 +126,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#player-shooting-control">Player Shooting Control</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#mmv-bullet">MMV_Bullet</a></li>
 </ul>
 </li>
 </ul>
@@ -656,7 +657,7 @@ that you can add a component that controls the <code class="docutils literal not
 </div>
 <ul class="simple">
 <li><p><strong>spawner:</strong> The object in charge of spawning the shots.</p></li>
-<li><p><strong>bullet</strong> The prefab of the shooting projectile, this projectile needs to have the <code class="docutils literal notranslate"><span class="pre">MMV_Bullet</span></code> component to work.</p></li>
+<li><p><strong>bullet</strong> The prefab of the shooting projectile, this projectile needs to have the <a class="reference internal" href="#mmv-bullet"><span class="std std-ref">MMV_Bullet</span></a> component to work.</p></li>
 <li><p><strong>ignore layer:</strong> The shooting projectile MUST be from a different layer than the other collision game objects, add the projectile layer here. Recommended Skip <em>Raycast layer</em>.</p></li>
 <li><p><strong>bullet velocity:</strong> The projectile movement speed, beware of very high speeds, the collision system may sometimes fail.</p></li>
 <li><p><strong>explosion force:</strong> Apply blast force to nearby objects causing them to fly away with projectile impact.</p></li>
@@ -689,6 +690,45 @@ that you can add a component that controls the <code class="docutils literal not
 </div>
 <p>You can add the fire keys here and your <code class="docutils literal notranslate"><span class="pre">MMV_Shooter</span></code> will now work.</p>
 </div>
+</div>
+<div class="section" id="mmv-bullet">
+<span id="id4"></span><h3>MMV_Bullet<a class="headerlink" href="#mmv-bullet" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">MMV_Bullet</span></code> is the cannon firing projectile behavior component. Simulate the movement of the
+shot, the explosion effect when colliding with an object.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="_images/mmv_bullet_component.jpg"><img alt="_images/mmv_bullet_component.jpg" src="_images/mmv_bullet_component.jpg" style="width: 378.7px; height: 257.59999999999997px;" /></a>
+</div>
+<dl class="simple">
+<dt>To make your projectile just add the following components with the settings:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">RigidBody:</span></code></dt><dd><p>Use Gravity: <em>False</em></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Collider:</span></code></dt><dd><p>Is Trigger: <em>True</em></p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is recommended that the projectile be from the <strong>Ignore Layer</strong> layer.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">MMV_Bullet</span></code> component settings:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>particles fife time:</strong> When colliding with an object, the projectile emits particles (if configured), the lifetime is the time it takes for the particles to be destroyed.</p></li>
+<li><p><strong>audio life time:</strong> The lifetime of the explosion sound when colliding with an object.</p></li>
+<li><p><strong>particles:</strong> Add here the particles that will be instantiated when colliding with an object, such as explosion, hit, smoke, etc. (do not add loop enabled particles).</p></li>
+<li><p><strong>hit audio player:</strong> The AudioSource responsible for play the sound of the projectile colliding with some object.</p></li>
+<li><p><strong>hit sound:</strong> The sound of the projectile colliding with an object Explosion sound, hit etc.</p></li>
+</ul>
+</div></blockquote>
+<p>Shoot movement parameters are set in <a class="reference internal" href="#mmv-shooter">MMV_Shooter</a>. Add the object that contains this
+<code class="docutils literal notranslate"><span class="pre">MMV_Bullet</span></code> component to the <a class="reference internal" href="#mmv-shooter">MMV_Shooter</a> of some vehicle and when it shoots, the projectile will already be.</p>
 </div>
 </div>
 </div>

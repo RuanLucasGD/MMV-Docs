@@ -440,7 +440,7 @@ add your spawn in the **Shot -> Spawner** component and a series of shot setting
 .. figure:: img/configuring_vehicle/shooter_shot.jpg
 
 * **spawner:** The object in charge of spawning the shots.
-* **bullet** The prefab of the shooting projectile, this projectile needs to have the ``MMV_Bullet`` component to work.
+* **bullet** The prefab of the shooting projectile, this projectile needs to have the :ref:`MMV_Bullet` component to work.
 * **ignore layer:** The shooting projectile MUST be from a different layer than the other collision game objects, add the projectile layer here. Recommended Skip *Raycast layer*.
 * **bullet velocity:** The projectile movement speed, beware of very high speeds, the collision system may sometimes fail.
 * **explosion force:** Apply blast force to nearby objects causing them to fly away with projectile impact.
@@ -477,5 +477,35 @@ Add the ``MMV_ShootController`` component to control the ``MMV_Shooter``.
     
 You can add the fire keys here and your ``MMV_Shooter`` will now work.
 
+.. _MMV_Bullet:
+
+MMV_Bullet
+----------
+
+The ``MMV_Bullet`` is the cannon firing projectile behavior component. Simulate the movement of the 
+shot, the explosion effect when colliding with an object. 
+
+.. figure:: img/configuring_vehicle/mmv_bullet_component.jpg
+    :scale: 70%
+
+To make your projectile just add the following components with the settings:
+    * ``RigidBody:``
+        Use Gravity: *False*
+    * ``Collider:``
+        Is Trigger: *True*
+
+.. warning::
+
+    It is recommended that the projectile be from the **Ignore Layer** layer.
 
 
+``MMV_Bullet`` component settings:
+
+    * **particles fife time:** When colliding with an object, the projectile emits particles (if configured), the lifetime is the time it takes for the particles to be destroyed.
+    * **audio life time:** The lifetime of the explosion sound when colliding with an object.
+    * **particles:** Add here the particles that will be instantiated when colliding with an object, such as explosion, hit, smoke, etc. (do not add loop enabled particles).
+    * **hit audio player:** The AudioSource responsible for play the sound of the projectile colliding with some object.
+    * **hit sound:** The sound of the projectile colliding with an object Explosion sound, hit etc.
+
+Shoot movement parameters are set in `MMV_Shooter`_. Add the object that contains this 
+``MMV_Bullet`` component to the `MMV_Shooter`_ of some vehicle and when it shoots, the projectile will already be.

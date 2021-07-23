@@ -20,3 +20,4 @@ all the components that are part of this system.
     creating_vehicle.rst
     configuring_camera.rst
     custom_controlers.rst
+    configuring_ui.rst

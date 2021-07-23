@@ -24,6 +24,7 @@ aim marker, speed and current gear.
 Gun:
     * **crosshair:** An ImageRenderer with the crosshair marker image. The marker will follow the movement of the cannon to see where it is aiming.
     * **reload:** The UI Text component to show the reload time when the vehicle fires.
+    * **crosshair smooth speed:** make the aiming marker movement smoother.
 
 Vehicle Engine:
     * **gear text:** UI text component that shows the vehicle's current gear.

@@ -1,23 +1,21 @@
+Welcome!
+========
 
-Introduction
-============
+Welcome to the **MMV (Modern Military Vehicle System**) documentation. 
+Here you will have all the information you need to create your own 
+vehicles based on the system, if you find any writing errors or even 
+system inconsistency please report the problem to us via github. 
+Implementation and correction requests are also welcome!
 
-Modern Military Vehicle System is a military vehicle simulation asset for arcade games. 
-With it you can create wheel and track physics simulation, turret and fire control, support 
-for explosion effects, dust (caused by wheel movement), engine sound and much more.
-This documentation will help you configure and create your own customizable vehicle.
+To get started, you can download the system through the `store <https://assetstore.unity.com/packages/tools/physics/mmv-modern-military-vehicle-system-197871>`__.
 
-.. figure:: /img/mmv-main-page.jpg
+Video tutorials are also available on Youtube
 
+Below you will see all the **MMV** documentation separated by themes, enjoy:
 
-To start, download the asset available from the Asset Store [...] and take a look at the 
-example scene that comes with the project, in the next chapters we will see in more detail 
-all the components that are part of this system.
+.. toctree::
+    :maxdepth: 2
 
-.. toctree:: 
-
-    overview.rst
-    creating_vehicle.rst
-    configuring_camera.rst
-    custom_controlers.rst
-    configuring_ui.rst
+    introduction
+    overview
+    api

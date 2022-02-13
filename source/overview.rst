@@ -1,89 +1,75 @@
-
 Overview
 ========
 
-Modules
--------------------
+Here's a summary of how the **MMV** architecture works and what you can do.
 
-An **MMV_vehicle** is composed of modules, each module is responsible for controlling some component. An example 
-would be an MBT (Main Battle tank) vehicle that contains the modules **MMV_MBT_Engine**, **MMV_MBT_WheelManager**, 
-**MMV_TurretController**. The component **MMV_MBT_Vehicle**, the vehicle's main physics script, contains all these 
-modules that work together, the data delivered by a given module are used by other modules making them 
-interconnected.
+The Main System
+~~~~~~~~~~~~~~~
 
-Below is a diagram that demonstrates how these modules are wired. The engine must deliver the left and right throttle 
-and brake force to the wheel manager. The manager must apply the suspension force and use the acceleration and brake 
-forces on the wheels.
+The main system consists of vehicle physics and the entire control system, such 
+as acceleration, steering, braking and gun turret movement. All other systems are just 
+**add-ons** to this main system and are **not mandatory**, allowing them to be replaced 
+by one customized to the developer's taste. Here's a summary of how the **MMV** 
+architecture works and what you can do.
 
-.. figure:: /img/overview/mbt_overview_diagram.jpg
+.. figure:: images/overview/main_system_diagram.jpg
+    :alt: 0%
+    :scale: 70%
 
-There are specific forces for each side, as each track has its own acceleration and brake, increasing the force on 
-one side and decreasing it on the other can cause the vehicle to rotate, thus being a form of steering. How the move 
-works will be explained below.
+The vehicle system is made up of **modules** that communicate, each module is responsible 
+for an essential part of the vehicle. You can access some vehicle API functions and 
+give commands, for example, tell the vehicle where to go or tell the gun turret module 
+where to aim, (this will be explained in the next modules of this documentation).
 
-Behaviour
----------
+How the vehicle behaves
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Acceleration
-~~~~~~~~~~~~
+The **MMV** has a custom wheel physics system, we managed to make the wheel configuration 
+very simple and it is still very stable for the purpose of Asset. The vehicle's system 
+will already do most of the hard work for you and so you just need to take care of passing 
+the control commands.
 
-The engine delivers different forces to each side of the wheels, left and right, acceleration left, right, left and 
-right brakes using inputs given by some controller, this controller tells the vehicle whether to go forward or 
-backward or to turn right and left.
+Movimentation
+-------------
 
-.. note::
+In the case of an **MBT** (Main Battle Tank) vehicle, all your vehicle movement control is 
+based on the acceleration of the wheels, whether they are going backwards or forwards 
+and the speed at which they are moving. An MBT vehicle from the **MMV** is no different, we 
+use this same principle, to better understand, below is an example of how the acceleration 
+influences the vehicle's direction.
 
-    Example code
+.. figure:: images/overview/mbt_directions_demo.svg
+    :alt: 0%
+    :scale: 100%
 
-.. code-block:: 
+How do Tracks Work
+------------------
 
-    vehicle.Acceleration = 1;   // forward
-    vehicle.Acceleration = -1;  // backward
-    
-    vehicle.Sterring = 1;       // left
-    vehicle.Sterring = -1;      // right
+The tracks use fake simulation to look like they actually move. The treadmill model is
+linked to a bone armature, one bone per wheel and via script this bone will follow the wheel's 
+position generating the effect that movement.
 
-The movement consists of the more you accelerate, the less you should brake (or the more you brake, the less you should 
-accelerate). By changing the acceleration weights on each side we can change the direction in which the vehicle moves 
-or turns it.
+.. figure:: images/overview/suspension_demo.gif
+    :alt: 0%
+    :scale: 155%
 
-.. figure:: img/overview/mbt_directions_demo.svg
+This solves the suspension problem, but there is another point that needs attention, which 
+is the issue of vehicle acceleration, the treadmill needs to respond to the speed at which 
+the vehicle moves and for that there is an integrated system in the wheel control script of 
+the MBT vehicle that changes the texture offset of the mat material giving the feeling of 
+movement.
 
-When configuring your vehicle, remember that the amount of front and side friction, amount of acceleration, acceleration 
-speed and brake force influence the rotation speed of the vehicle
+.. figure:: images/overview/mbt_movement_demo.gif
+    :alt: 0%
+    :scale: 140%
 
-.. figure:: img/overview/mbt_movement_demo.gif
+Weapon System
+-------------
 
-motion representation
+Only the turret system is integrated into the vehicle, fire control is done separately by other 
+scripts. The main job of the turret is just aiming at some position in the world respecting the 
+vehicle's angle limits.
 
-Aim Control
-~~~~~~~~~~~
-
-Most of the hard work of the fire controller has already been done, just create a custom controller (or use one that comes 
-with the system) to tell you where the target is, a global space position ``Vector3`` and that's enough to the turret and 
-the cannon aim at the target
-
-The aim is very precise and can hit targets even if the vehicle is at difficult angles and the rotation speed is always 
-constant.
-
-.. figure:: img/overview/vehicle_angle_gun_demo.svg
-
-The tower has no rotation limit, 360° angle
-
-Camera Control
-~~~~~~~~~~~~~~
-
-The default camera controller already tells the turret where it should aim, and also shows in its UI a vector marker of the 
-front of the cannon to know where it's aiming at the moment, it works the same way we see in games like world of tanks or war 
-thunder.
-
-.. figure:: img/overview/gun_aim_example.jpg
-
-To make this marker work it was necessary to do a little more than take the cannon's front position using raycasts and convert 
-it to screen space, that's because Unity can't return the exact position when the forward distance is too far, the values come 
-out completely different from what they were supposed to be.
-To get around this, a raycast was done from the camera to the position of the front of the cannon (with raycast) and a 
-``Quaternion.LookAt`` to that position. The forward vector of this ``(lookAt * Vector3.forward) + cameraPos`` converted to screen 
-space was the form used to get the position of the cannon's crosshair marker.
-
-.. figure:: /img/overview/cannon_ui_marker.svg
+.. figure:: images/overview/turret_aim.jpg
+    :alt: 0%
+    :scale: 44%

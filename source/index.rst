@@ -1,6 +1,8 @@
 Welcome!
 ========
 
+.. figure:: images/mmv-main-page.jpg
+
 Welcome to the **MMV (Modern Military Vehicle System**) documentation. 
 Here you will have all the information you need to create your own 
 vehicles based on the system, if you find any writing errors or even 
@@ -18,4 +20,8 @@ Below you will see all the **MMV** documentation separated by themes, enjoy:
 
     introduction
     overview
+    examples
+    creating_vehicle
+    advanced_configurations
+    custom_controllers
     api

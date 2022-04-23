@@ -135,12 +135,17 @@ see in the image.</p>
 <img alt="_images/vehicle_engine_mbt_acceleration.jpg" src="_images/vehicle_engine_mbt_acceleration.jpg" />
 </figure>
 <p><strong>max:</strong> The maximum force the vehicle can achieve with acceleration.</p>
-<p><strong>acceleration:</strong> The engine power curve is based on vehicle speed. In this example, when the vehicle is at low speed it has a lot of pulling force and the faster the vehicle will gain speed, but when it reaches maximum speed it will not be able to climb big ravines or push obstacles without losing acceleration and speed.</p>
-<p><strong>slowdown:</strong> Braking force when the vehicle is decelerating, the higher it is, the faster the vehicle will stop when not accelerating.</p>
+<p><strong>acceleration:</strong> The engine power curve is based on vehicle speed. In this example, when the vehicle is at
+low speed it has a lot of pulling force and the faster the vehicle will gain speed, but when it reaches
+maximum speed it will not be able to climb big ravines or push obstacles without losing acceleration and speed.</p>
+<p><strong>slowdown:</strong> Braking force when the vehicle is decelerating, the higher it is, the faster the vehicle
+will stop when not accelerating.</p>
 <p><strong>forward:</strong> The maximum speed the vehicle can reach moving forward.</p>
 <p><strong>backward:</strong> Maximum speed moving backwards.</p>
 <p><strong>max turn speed:</strong> Maximum speed the vehicle can turn.</p>
-<p><strong>turn acceleration:</strong> Engine acceleration while the vehicle is turning based on speed. Following the example of the image, the slower the vehicle is turning, the greater the acceleration of the engine and the faster the vehicle is turning, the lower the engine force.</p>
+<p><strong>turn acceleration:</strong> Engine acceleration while the vehicle is turning based on speed. Following the example
+of the image, the slower the vehicle is turning, the greater the acceleration of the engine and the faster
+the vehicle is turning, the lower the engine force.</p>
 </section>
 <section id="brake">
 <h4>Brake<a class="headerlink" href="#brake" title="Permalink to this headline"></a></h4>
@@ -294,7 +299,7 @@ the easier it will be for the vehicle to tip over in curves.</p>
 </figure>
 <p>Describe all main shooting behavior.</p>
 <p><strong>spawner:</strong> Transform from the position where the shot will come from.</p>
-<p><strong>bullet:</strong> The projectile that will be instantiated. It is important that this object has the Projectile component, read (CREATING PROJECTILE) for more information.</p>
+<p><strong>bullet:</strong> The projectile that will be instantiated. It is important that this object has the Projectile component, read <a class="reference internal" href="creating_vehicle.html#creating-bullet"><span class="std std-ref">Creating a Bullet</span></a> for more information.</p>
 <p><strong>ignore layer:</strong> The projectile will only identify a collision with another object if it does not have that layer defined.</p>
 <p><strong>bullet velocity:</strong> Speed in meters per second that the projectile moves.</p>
 <p><strong>bullet life time:</strong> After “X” seconds the projectile will be destroyed automatically even without having collided with another object.</p>

@@ -357,6 +357,8 @@ moment, which is the **“Bullet” property**.
 .. figure:: images/creating_vehicle/shooter_manager.jpg
     :alt: 0%
 
+.. _creating_bullet:
+
 Creating a Bullet
 ^^^^^^^^^^^^^^^^^
 

@@ -30,9 +30,12 @@ Acceleration
 
 **max:** The maximum force the vehicle can achieve with acceleration.
 
-**acceleration:** The engine power curve is based on vehicle speed. In this example, when the vehicle is at low speed it has a lot of pulling force and the faster the vehicle will gain speed, but when it reaches maximum speed it will not be able to climb big ravines or push obstacles without losing acceleration and speed.
+**acceleration:** The engine power curve is based on vehicle speed. In this example, when the vehicle is at 
+low speed it has a lot of pulling force and the faster the vehicle will gain speed, but when it reaches 
+maximum speed it will not be able to climb big ravines or push obstacles without losing acceleration and speed.
 
-**slowdown:** Braking force when the vehicle is decelerating, the higher it is, the faster the vehicle will stop when not accelerating.
+**slowdown:** Braking force when the vehicle is decelerating, the higher it is, the faster the vehicle 
+will stop when not accelerating.
 
 **forward:** The maximum speed the vehicle can reach moving forward.
 
@@ -40,7 +43,9 @@ Acceleration
 
 **max turn speed:** Maximum speed the vehicle can turn.
 
-**turn acceleration:** Engine acceleration while the vehicle is turning based on speed. Following the example of the image, the slower the vehicle is turning, the greater the acceleration of the engine and the faster the vehicle is turning, the lower the engine force.
+**turn acceleration:** Engine acceleration while the vehicle is turning based on speed. Following the example 
+of the image, the slower the vehicle is turning, the greater the acceleration of the engine and the faster 
+the vehicle is turning, the lower the engine force.
 
 Brake
 .....
@@ -220,7 +225,7 @@ Describe all main shooting behavior.
 
 **spawner:** Transform from the position where the shot will come from.
 
-**bullet:** The projectile that will be instantiated. It is important that this object has the Projectile component, read (CREATING PROJECTILE) for more information.
+**bullet:** The projectile that will be instantiated. It is important that this object has the Projectile component, read :ref:`creating_bullet` for more information.
 
 **ignore layer:** The projectile will only identify a collision with another object if it does not have that layer defined.
 

@@ -74,6 +74,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#sound">Sound</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#standart-camera-contoller-component">Standart Camera Contoller Component</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#camera-behaviour">Camera Behaviour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types">types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#game-cameras">Game cameras.</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="custom_controllers.html">Custom Controllers</a></li>
@@ -311,6 +319,74 @@ the easier it will be for the vehicle to tip over in curves.</p>
 </figure>
 <p><strong>audio source:</strong> Audio source that will be used to play the trigger sound.</p>
 <p><strong>clip:</strong> The audio clip of the shot.</p>
+</section>
+</section>
+<section id="standart-camera-contoller-component">
+<h2>Standart Camera Contoller Component<a class="headerlink" href="#standart-camera-contoller-component" title="Permalink to this headline"></a></h2>
+<p>Standard MMV camera controller, capable of delivering different types of camera positioning such as 3rd person,
+commander’s view and sniper’s view.</p>
+<figure class="align-default">
+<img alt="_images/standart_camera_controller1.jpg" src="_images/standart_camera_controller1.jpg" />
+</figure>
+<p>target: add the target vehicle to be followed by the camera.</p>
+<figure class="align-default">
+<img alt="_images/standart_camera_controller_inputs.jpg" src="_images/standart_camera_controller_inputs.jpg" />
+</figure>
+<p>Add player controls to be able to control the camera, it is possible to configure both keyboard
+and mouse and gamepad.</p>
+<p><strong>See for configure your Axes:</strong> <a class="reference external" href="https://docs.unity3d.com/Manual/class-InputManager.html">Unity Input Manager</a></p>
+<p><strong>horizontal Axes:</strong> Horizontal Axes of the Input Axes to rotate the camera horizontally.</p>
+<p><strong>vertical Axes:</strong> Vertical Axes of the Input Axes to rotate the camera vertically.</p>
+<p><strong>invert horizontal Axes:</strong> Invert the direction of the player control’s horizontal Axes.</p>
+<p><strong>invert vertical Axes:</strong> Invert the direction of the player control’s vertical Axes.</p>
+<p><strong>change camera key:</strong> The key or button to switch between cameras if you have more than one.</p>
+<section id="camera-behaviour">
+<h3>Camera Behaviour<a class="headerlink" href="#camera-behaviour" title="Permalink to this headline"></a></h3>
+<figure class="align-default">
+<img alt="_images/standart_camera_controller_camera_behaviour.jpg" src="_images/standart_camera_controller_camera_behaviour.jpg" />
+</figure>
+<p>Describe how the camera should behave.</p>
+<p><strong>camera turn speed:</strong> The speed at which the camera rotates</p>
+<p><strong>crosshair layer:</strong> Layer of objects that have a collider.</p>
+</section>
+<section id="types">
+<h3>types<a class="headerlink" href="#types" title="Permalink to this headline"></a></h3>
+<section id="game-cameras">
+<h4>Game cameras.<a class="headerlink" href="#game-cameras" title="Permalink to this headline"></a></h4>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/standart_camera_controller_types.jpg"><img alt="0%" src="_images/standart_camera_controller_types.jpg" style="width: 282.40000000000003px; height: 392.8px;" /></a>
+</figure>
+<figure class="align-default">
+<img alt="_images/standart_camera_controller_camera_names.jpg" src="_images/standart_camera_controller_camera_names.jpg" />
+</figure>
+<p><strong>amount:</strong> Number of vehicle cameras.</p>
+<section id="camera-x">
+<h5>Camera “X”<a class="headerlink" href="#camera-x" title="Permalink to this headline"></a></h5>
+<p><strong>camera:</strong> The chosen camera.</p>
+<p><strong>type:</strong> The type of camera.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>THIRD_PERSON:</strong> The camera moves around the vehicle and uses the “Camera Collider” to avoid obstacles.</p>
+<p><strong>FIRST_PERSON:</strong> Stays in the same place, but can be rotated vertically and horizontally.</p>
+<figure class="align-default">
+<img alt="_images/standart_camera_controller_camera_types_demo.jpg" src="_images/standart_camera_controller_camera_types_demo.jpg" />
+</figure>
+</div>
+<p><strong>min vertical:</strong> The minimum angle to the vertical.
+<strong>max vertical:</strong> The maximum angle vertically.</p>
+<section id="options-for-first-person">
+<h6>Options for FIRST_PERSON<a class="headerlink" href="#options-for-first-person" title="Permalink to this headline"></a></h6>
+<p><strong>max horizontal:</strong> The maximum angle the camera can turn horizontally.</p>
+</section>
+<section id="options-for-third-person">
+<h6>Options for THIRD_PERSON<a class="headerlink" href="#options-for-third-person" title="Permalink to this headline"></a></h6>
+<p><strong>camera height:</strong> The height of the camera relative to the vehicle.</p>
+<p><strong>camera distance:</strong> The distance of the camera from the vehicle</p>
+<p><strong>align to vehicle:</strong> Aligns the Y axis of the camera with that of the vehicle, by default it is already activated in FIRST_PERSON mode.</p>
+<p><strong>camera collision:</strong> Camera collision sensor, prevents it from entering walls, add here the collision layers of your scene, by default the layer is <em>“Default”</em>.</p>
+</section>
+</section>
+</section>
 </section>
 </section>
 </section>

@@ -14,7 +14,7 @@ Vehicle Component
 A vehicle component is composed of some modules, each module controls a specific part as you can 
 see in the image.
 
-.. figure:: images/advanced_configurations/vehicle_modules.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_modules.jpg
 
 Let's explain the vehicle component separated by modules.
 
@@ -26,7 +26,7 @@ Module responsible for all parts of the vehicle's power, movement, engine sound 
 Acceleration
 ............
 
-.. figure:: images/advanced_configurations/vehicle_engine_mbt_acceleration.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_engine_mbt_acceleration.jpg
 
 **max:** The maximum force the vehicle can achieve with acceleration.
 
@@ -45,14 +45,14 @@ Acceleration
 Brake
 .....
 
-.. figure:: images/advanced_configurations/vehicle_engine_mbt_brake.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_engine_mbt_brake.jpg
 
 Maximum vehicle brake force, the higher the faster the vehicle will stop when pressing the brake.
 
 Gears
 .....
 
-.. figure:: images/advanced_configurations/vehicle_engine_mbt_gears.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_engine_mbt_gears.jpg
 
 Control the number of gears and when to change.
 
@@ -63,14 +63,14 @@ Control the number of gears and when to change.
 
     Example of how automatic gear shift times work.
 
-    .. figure:: images/advanced_configurations/vehicle_engine_gear_bar_example.svg
+    .. figure:: images/advanced_configurations/vehicle/vehicle_engine_gear_bar_example.svg
 
 **gear (n1 - n2):** The speed at which the vehicle must be to change gears.
 
 Engine Sound
 ............
 
-.. figure:: images/advanced_configurations/vehicle_engine_mbt_engine_sound.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_engine_mbt_engine_sound.jpg
 
 Control the sound of the vehicle's engine.
 
@@ -86,14 +86,14 @@ reproduce the sound of the engine.
 Turret
 ------
 
-.. figure:: images/advanced_configurations/vehicle_turret.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_turret.jpg
 
 This module is responsible for controlling the turret and aiming the vehicle.
 
 Transforms
 ..........
 
-.. figure:: images/advanced_configurations/vehicle_turret_demo.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_turret_demo.jpg
 
 **turret:** Vehicle weapon system turret.
 
@@ -105,7 +105,7 @@ Transforms
 Wheels
 ------
 
-.. figure:: images/advanced_configurations/vehicle_wheels_mbt.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_wheels_mbt.jpg
 
 The wheel module manages all of the vehicle's wheels, applies suspension physics and tells them 
 when to accelerate or brake. It makes the vehicle turn and even the tracks move.
@@ -113,7 +113,7 @@ when to accelerate or brake. It makes the vehicle turn and even the tracks move.
 Wheels Characteristics
 ......................
 
-.. figure:: images/advanced_configurations/vehicle_wheels_mbt_wheels_characteristics.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_wheels_mbt_wheels_characteristics.jpg
 
 Demo of wheel gizmos:
 
@@ -148,7 +148,7 @@ vehicle slip when on certain terrain.
 Tracks
 ------
 
-.. figure:: images/advanced_configurations/vehicle_wheels_mbt_tracks.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_wheels_mbt_tracks.jpg
 
 Add here the meshes of your vehicle's tracks, so that they follow the movement of the wheels.
 
@@ -174,19 +174,19 @@ Left/Right Additional Wheels Renderers
 Add here the wheel meshes that don't apply physics but must rotate along with the others like the front 
 and back wheels of the tank.
 
-.. figure:: images/advanced_configurations/vehicle_mbt_additional_wheels_demo.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_mbt_additional_wheels_demo.jpg
 
 Wheels Particles
 ................
 
-.. figure:: images/advanced_configurations/vehicle_wheels_mbt_wheels_particles.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_wheels_mbt_wheels_particles.jpg
 
 It is possible to add particles to the wheels so that when the vehicle moves, they are installed, such as dust.
 
-.. figure:: images/advanced_configurations/vehicle_dust_particle_demo.jpg
-.. figure:: images/advanced_configurations/vehicle_dust_particle_demo_2.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_dust_particle_demo.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_dust_particle_demo_2.jpg
 
-**left/right particle:** The particle on either side of the vehicle
+**left/right particle:** The particle on either side of the vehicle.
 
 **max emission:** The particle on either side of the vehicle.
 
@@ -197,8 +197,61 @@ Stability
 
 Control vehicle stability.
 
-.. figure:: images/advanced_configurations/vehicle_stability.jpg
+.. figure:: images/advanced_configurations/vehicle/vehicle_stability.jpg
 
 **Angle deceleration:** how much gravity influences the vehicle when going uphill or steep places.
 
-**center of mass:** The vehicle's center of mass, recommended to leave in the center, the higher on the Y axis, the easier it will be for the vehicle to tip over in curves.
+**center of mass:** The vehicle's center of mass, recommended to leave in the center, the higher on the Y axis, 
+the easier it will be for the vehicle to tip over in curves.
+
+Shooter Manager Component
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Responsible for managing gun fire.
+
+.. figure:: images/advanced_configurations/shooter_manager/shooter_manager.jpg
+
+Shot
+----
+
+.. figure:: images/advanced_configurations/shooter_manager/shooter_manager_shot.jpg
+
+Describe all main shooting behavior.
+
+**spawner:** Transform from the position where the shot will come from.
+
+**bullet:** The projectile that will be instantiated. It is important that this object has the Projectile component, read (CREATING PROJECTILE) for more information.
+
+**ignore layer:** The projectile will only identify a collision with another object if it does not have that layer defined.
+
+**bullet velocity:** Speed in meters per second that the projectile moves.
+
+**bullet life time:** After “X” seconds the projectile will be destroyed automatically even without having collided with another object.
+
+**bullet explosion force:** The explosion force that will be assigned to nearby objects when they collide with something.
+
+**bullet explosion range:** The distance to identify nearby objects to apply explosion force after colliding with another object.
+
+**explosion force curve:** The strength of the explosion force over the distance when the projectile collides.
+
+**reload time:** The weapon's reload time.
+
+**recoil:** The force of the shot applied to the vehicle.
+
+Effects
+-------
+
+.. figure:: images/advanced_configurations/shooter_manager/shooter_manager_effects.jpg
+
+Applies effects when firing.
+
+**Particles:** Particles that will be instantiated when it fires.
+
+Sound
+-----
+
+.. figure:: images/advanced_configurations/shooter_manager/shooter_manager_sound.jpg
+
+**audio source:** Audio source that will be used to play the trigger sound.
+
+**clip:** The audio clip of the shot.

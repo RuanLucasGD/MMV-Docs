@@ -14,7 +14,7 @@ Vehicle Component
 A vehicle component is composed of some modules, each module controls a specific part as you can 
 see in the image.
 
-.. figure:: images/advanced_configurations/vehicle_modules.png
+.. figure:: images/advanced_configurations/vehicle_modules.jpg
 
 Let's explain the vehicle component separated by modules.
 
@@ -26,7 +26,7 @@ Module responsible for all parts of the vehicle's power, movement, engine sound 
 Acceleration
 ............
 
-.. figure:: images/advanced_configurations/vehicle_engine_mbt_acceleration.png
+.. figure:: images/advanced_configurations/vehicle_engine_mbt_acceleration.jpg
 
 **max:** The maximum force the vehicle can achieve with acceleration.
 
@@ -45,14 +45,14 @@ Acceleration
 Brake
 .....
 
-.. figure:: images/advanced_configurations/vehicle_engine_mbt_brake.png
+.. figure:: images/advanced_configurations/vehicle_engine_mbt_brake.jpg
 
 Maximum vehicle brake force, the higher the faster the vehicle will stop when pressing the brake.
 
 Gears
 .....
 
-.. figure:: images/advanced_configurations/vehicle_engine_mbt_gears.png
+.. figure:: images/advanced_configurations/vehicle_engine_mbt_gears.jpg
 
 Control the number of gears and when to change.
 
@@ -70,7 +70,7 @@ Control the number of gears and when to change.
 Engine Sound
 ............
 
-.. figure:: images/advanced_configurations/vehicle_engine_mbt_engine_sound.png
+.. figure:: images/advanced_configurations/vehicle_engine_mbt_engine_sound.jpg
 
 Control the sound of the vehicle's engine.
 
@@ -86,14 +86,14 @@ reproduce the sound of the engine.
 Turret
 ------
 
-.. figure:: images/advanced_configurations/vehicle_turret.png
+.. figure:: images/advanced_configurations/vehicle_turret.jpg
 
 This module is responsible for controlling the turret and aiming the vehicle.
 
 Transforms
 ..........
 
-.. figure:: images/advanced_configurations/vehicle_turret_demo.png
+.. figure:: images/advanced_configurations/vehicle_turret_demo.jpg
 
 **turret:** Vehicle weapon system turret.
 
@@ -105,7 +105,7 @@ Transforms
 Wheels
 ------
 
-.. figure:: images/advanced_configurations/vehicle_wheels_mbt.png
+.. figure:: images/advanced_configurations/vehicle_wheels_mbt.jpg
 
 The wheel module manages all of the vehicle's wheels, applies suspension physics and tells them 
 when to accelerate or brake. It makes the vehicle turn and even the tracks move.
@@ -113,7 +113,7 @@ when to accelerate or brake. It makes the vehicle turn and even the tracks move.
 Wheels Characteristics
 ......................
 
-.. figure:: images/advanced_configurations/vehicle_wheels_mbt_wheels_characteristics.png
+.. figure:: images/advanced_configurations/vehicle_wheels_mbt_wheels_characteristics.jpg
 
 Demo of wheel gizmos:
 
@@ -148,7 +148,7 @@ vehicle slip when on certain terrain.
 Tracks
 ------
 
-.. figure:: images/advanced_configurations/vehicle_wheels_mbt_tracks.png
+.. figure:: images/advanced_configurations/vehicle_wheels_mbt_tracks.jpg
 
 Add here the meshes of your vehicle's tracks, so that they follow the movement of the wheels.
 
@@ -174,17 +174,17 @@ Left/Right Additional Wheels Renderers
 Add here the wheel meshes that don't apply physics but must rotate along with the others like the front 
 and back wheels of the tank.
 
-.. figure:: images/advanced_configurations/vehicle_mbt_additional_wheels_demo.png
+.. figure:: images/advanced_configurations/vehicle_mbt_additional_wheels_demo.jpg
 
 Wheels Particles
 ................
 
-.. figure:: images/advanced_configurations/vehicle_wheels_mbt_wheels_particles.png
+.. figure:: images/advanced_configurations/vehicle_wheels_mbt_wheels_particles.jpg
 
 It is possible to add particles to the wheels so that when the vehicle moves, they are installed, such as dust.
 
-.. figure:: images/advanced_configurations/vehicle_dust_particle_demo.png
-.. figure:: images/advanced_configurations/vehicle_dust_particle_demo_2.png
+.. figure:: images/advanced_configurations/vehicle_dust_particle_demo.jpg
+.. figure:: images/advanced_configurations/vehicle_dust_particle_demo_2.jpg
 
 **left/right particle:** The particle on either side of the vehicle
 
@@ -197,7 +197,7 @@ Stability
 
 Control vehicle stability.
 
-.. figure:: images/advanced_configurations/vehicle_stability.png
+.. figure:: images/advanced_configurations/vehicle_stability.jpg
 
 **Angle deceleration:** how much gravity influences the vehicle when going uphill or steep places.
 

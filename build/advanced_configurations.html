@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API" href="api.html" />
+    <link rel="next" title="Custom Controllers" href="custom_controllers.html" />
     <link rel="prev" title="Creating Vehicle from Scratch" href="creating_vehicle.html" /> 
 </head>
 
@@ -40,8 +40,37 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="creating_vehicle.html">Creating Vehicle from Scratch</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced Components Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced Components Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vehicle-component">Vehicle Component</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#engine">Engine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#acceleration">Acceleration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#brake">Brake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gears">Gears</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#engine-sound">Engine Sound</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#turret">Turret</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#transforms">Transforms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#wheels">Wheels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wheels-characteristics">Wheels Characteristics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tracks">Tracks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#left-right-wheels">Left/Right Wheels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#left-right-additional-wheels-renderers">Left/Right Additional Wheels Renderers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wheels-particles">Wheels Particles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#stability">Stability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom_controllers.html">Custom Controllers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 </ul>
 
@@ -70,8 +99,173 @@
            <div itemprop="articleBody">
              
   <section id="advanced-components-configuration">
-<span id="advanced-vehicle-configuration"></span><h1>Advanced Components Configuration<a class="headerlink" href="#advanced-components-configuration" title="Permalink to this headline"></a></h1>
-<p>To do.</p>
+<span id="advanced-configurations"></span><h1>Advanced Components Configuration<a class="headerlink" href="#advanced-components-configuration" title="Permalink to this headline"></a></h1>
+<p>Welcome to the <strong>MMV</strong> advanced settings module. Here will be shown each property of each official
+component of the system. In the previous modules, a view was made above each component in order
+to show how the system works in general, but when we want something more complete it is important
+to know about all the possibilities of asset configurations.</p>
+<section id="vehicle-component">
+<h2>Vehicle Component<a class="headerlink" href="#vehicle-component" title="Permalink to this headline"></a></h2>
+<p>A vehicle component is composed of some modules, each module controls a specific part as you can
+see in the image.</p>
+<figure class="align-default">
+<img alt="_images/vehicle_modules.png" src="_images/vehicle_modules.png" />
+</figure>
+<p>Let’s explain the vehicle component separated by modules.</p>
+<section id="engine">
+<h3>Engine<a class="headerlink" href="#engine" title="Permalink to this headline"></a></h3>
+<p>Module responsible for all parts of the vehicle’s power, movement, engine sound and braking system.</p>
+<section id="acceleration">
+<h4>Acceleration<a class="headerlink" href="#acceleration" title="Permalink to this headline"></a></h4>
+<figure class="align-default">
+<img alt="_images/vehicle_engine_mbt_acceleration.png" src="_images/vehicle_engine_mbt_acceleration.png" />
+</figure>
+<p><strong>max:</strong> The maximum force the vehicle can achieve with acceleration.</p>
+<p><strong>acceleration:</strong> The engine power curve is based on vehicle speed. In this example, when the vehicle is at low speed it has a lot of pulling force and the faster the vehicle will gain speed, but when it reaches maximum speed it will not be able to climb big ravines or push obstacles without losing acceleration and speed.</p>
+<p><strong>slowdown:</strong> Braking force when the vehicle is decelerating, the higher it is, the faster the vehicle will stop when not accelerating.</p>
+<p><strong>forward:</strong> The maximum speed the vehicle can reach moving forward.</p>
+<p><strong>backward:</strong> Maximum speed moving backwards.</p>
+<p><strong>max turn speed:</strong> Maximum speed the vehicle can turn.</p>
+<p><strong>turn acceleration:</strong> Engine acceleration while the vehicle is turning based on speed. Following the example of the image, the slower the vehicle is turning, the greater the acceleration of the engine and the faster the vehicle is turning, the lower the engine force.</p>
+</section>
+<section id="brake">
+<h4>Brake<a class="headerlink" href="#brake" title="Permalink to this headline"></a></h4>
+<figure class="align-default">
+<img alt="_images/vehicle_engine_mbt_brake.png" src="_images/vehicle_engine_mbt_brake.png" />
+</figure>
+<p>Maximum vehicle brake force, the higher the faster the vehicle will stop when pressing the brake.</p>
+</section>
+<section id="gears">
+<h4>Gears<a class="headerlink" href="#gears" title="Permalink to this headline"></a></h4>
+<figure class="align-default">
+<img alt="_images/vehicle_engine_mbt_gears.png" src="_images/vehicle_engine_mbt_gears.png" />
+</figure>
+<p>Control the number of gears and when to change.</p>
+<p><strong>amount forward/backward:</strong> The amount of gear shifts the vehicle can make</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Example of how automatic gear shift times work.</p>
+<figure class="align-default">
+<img alt="_images/vehicle_engine_gear_bar_example.svg" src="_images/vehicle_engine_gear_bar_example.svg" /></figure>
+</div>
+<p><strong>gear (n1 - n2):</strong> The speed at which the vehicle must be to change gears.</p>
+</section>
+<section id="engine-sound">
+<h4>Engine Sound<a class="headerlink" href="#engine-sound" title="Permalink to this headline"></a></h4>
+<figure class="align-default">
+<img alt="_images/vehicle_engine_mbt_engine_sound.png" src="_images/vehicle_engine_mbt_engine_sound.png" />
+</figure>
+<p>Control the sound of the vehicle’s engine.</p>
+<p><strong>audio source:</strong> Any audio source that is in the vehicle that can be used to
+reproduce the sound of the engine.</p>
+<p><strong>audio clip:</strong> Your engine’s audio clip.</p>
+<p><strong>min pitch:</strong> The lowest pitch that the engine sound can reach if it’s not accelerating.</p>
+<p><strong>max forward/backward pitch:</strong> The maximum pitch that the engine sound can reach when accelerating.</p>
+</section>
+</section>
+<section id="turret">
+<h3>Turret<a class="headerlink" href="#turret" title="Permalink to this headline"></a></h3>
+<figure class="align-default">
+<img alt="_images/vehicle_turret.png" src="_images/vehicle_turret.png" />
+</figure>
+<p>This module is responsible for controlling the turret and aiming the vehicle.</p>
+<section id="transforms">
+<h4>Transforms<a class="headerlink" href="#transforms" title="Permalink to this headline"></a></h4>
+<figure class="align-default">
+<img alt="_images/vehicle_turret_demo.png" src="_images/vehicle_turret_demo.png" />
+</figure>
+<p><strong>turret:</strong> Vehicle weapon system turret.</p>
+<p><strong>cannon:</strong> Cannon that is connected to the vehicle’s turret.</p>
+<p><strong>horizontal velocity:</strong> The speed at which the turret flips horizontally towards the target.
+<strong>vertical velocity:</strong> The speed at which the cannon turns vertically towards the target.</p>
+</section>
+</section>
+<section id="wheels">
+<h3>Wheels<a class="headerlink" href="#wheels" title="Permalink to this headline"></a></h3>
+<figure class="align-default">
+<img alt="_images/vehicle_wheels_mbt.png" src="_images/vehicle_wheels_mbt.png" />
+</figure>
+<p>The wheel module manages all of the vehicle’s wheels, applies suspension physics and tells them
+when to accelerate or brake. It makes the vehicle turn and even the tracks move.</p>
+<section id="wheels-characteristics">
+<h4>Wheels Characteristics<a class="headerlink" href="#wheels-characteristics" title="Permalink to this headline"></a></h4>
+<figure class="align-default">
+<img alt="_images/vehicle_wheels_mbt_wheels_characteristics.png" src="_images/vehicle_wheels_mbt_wheels_characteristics.png" />
+</figure>
+<p>Demo of wheel gizmos:</p>
+<p><strong>radius:</strong> The size of each wheel.</p>
+<section id="spring">
+<h5>Spring<a class="headerlink" href="#spring" title="Permalink to this headline"></a></h5>
+<p><strong>length:</strong> The length of the suspension, the longer the higher the vehicle will be.</p>
+<p><strong>height:</strong> Used as a suspension start marker, this property does not impact the appearance
+of the vehicle’s suspension, but when properly configured it prevents physics errors. The
+ideal is to leave the height within or at least a little above the wheel position, so that
+when the suspension is 100% compressed there are no miscalculations.</p>
+<p><strong>stiffness:</strong> Resistance of the suspension, the higher, the stiffer the suspension of the vehicle.</p>
+<p><strong>damper:</strong> Smoothing, softens the force of the suspension when it is compressed, preventing the vehicle
+from “bouncing” when hitting the ground with force or going over an obstacle.</p>
+</section>
+<section id="friction">
+<h5>Friction<a class="headerlink" href="#friction" title="Permalink to this headline"></a></h5>
+<p><strong>forward:</strong> How much the wheels will slide when moving forward or backward.</p>
+<p><strong>side:</strong> How far do the wheels slide to the side.</p>
+<p><strong>multiply:</strong> Multiplies forward and side to obtain different skidding behavior, can be used to make the
+vehicle slip when on certain terrain.</p>
+</section>
+</section>
+</section>
+<section id="tracks">
+<h3>Tracks<a class="headerlink" href="#tracks" title="Permalink to this headline"></a></h3>
+<figure class="align-default">
+<img alt="_images/vehicle_wheels_mbt_tracks.png" src="_images/vehicle_wheels_mbt_tracks.png" />
+</figure>
+<p>Add here the meshes of your vehicle’s tracks, so that they follow the movement of the wheels.</p>
+<p><strong>multiply rotation velocity:</strong> If your belt is not moving at the correct speed, change this value
+to correct the speed.</p>
+<section id="left-right-wheels">
+<h4>Left/Right Wheels<a class="headerlink" href="#left-right-wheels" title="Permalink to this headline"></a></h4>
+<p>Add your vehicle’s wheels here, if you are in doubt about which objects to place here, see <a class="reference internal" href="creating_vehicle.html#adding-physics-on-vehicle"><span class="std std-ref">Adding physics to the vehicle</span></a>.</p>
+<p><strong>Collider:</strong> Transform of the central position of the wheel (empty object), will be used to calculate the
+suspension and movement of the wheel.</p>
+<p><strong>Mesh:</strong> Another transform that is in the same position as the wheel, but has a MeshRenderer to be the 3D
+model of the wheel.</p>
+<p><strong>Bone:</strong> A track bone, which is next to the wheel.</p>
+</section>
+<section id="left-right-additional-wheels-renderers">
+<h4>Left/Right Additional Wheels Renderers<a class="headerlink" href="#left-right-additional-wheels-renderers" title="Permalink to this headline"></a></h4>
+<p>Add here the wheel meshes that don’t apply physics but must rotate along with the others like the front
+and back wheels of the tank.</p>
+<figure class="align-default">
+<img alt="_images/vehicle_mbt_additional_wheels_demo.png" src="_images/vehicle_mbt_additional_wheels_demo.png" />
+</figure>
+</section>
+<section id="wheels-particles">
+<h4>Wheels Particles<a class="headerlink" href="#wheels-particles" title="Permalink to this headline"></a></h4>
+<figure class="align-default">
+<img alt="_images/vehicle_wheels_mbt_wheels_particles.png" src="_images/vehicle_wheels_mbt_wheels_particles.png" />
+</figure>
+<p>It is possible to add particles to the wheels so that when the vehicle moves, they are installed, such as dust.</p>
+<figure class="align-default">
+<img alt="_images/vehicle_dust_particle_demo.png" src="_images/vehicle_dust_particle_demo.png" />
+</figure>
+<figure class="align-default">
+<img alt="_images/vehicle_dust_particle_demo_2.png" src="_images/vehicle_dust_particle_demo_2.png" />
+</figure>
+<p><strong>left/right particle:</strong> The particle on either side of the vehicle</p>
+<p><strong>max emission:</strong> The particle on either side of the vehicle.</p>
+<p><strong>stop delay:</strong> The time the particles take to zero from the instant when the vehicle leaves the ground.</p>
+</section>
+</section>
+<section id="stability">
+<h3>Stability<a class="headerlink" href="#stability" title="Permalink to this headline"></a></h3>
+<p>Control vehicle stability.</p>
+<figure class="align-default">
+<img alt="_images/vehicle_stability.png" src="_images/vehicle_stability.png" />
+</figure>
+<p><strong>Angle deceleration:</strong> how much gravity influences the vehicle when going uphill or steep places.</p>
+<p><strong>center of mass:</strong> The vehicle’s center of mass, recommended to leave in the center, the higher on the Y axis, the easier it will be for the vehicle to tip over in curves.</p>
+</section>
+</section>
 </section>
 
 
@@ -79,7 +273,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="creating_vehicle.html" class="btn btn-neutral float-left" title="Creating Vehicle from Scratch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="custom_controllers.html" class="btn btn-neutral float-right" title="Custom Controllers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

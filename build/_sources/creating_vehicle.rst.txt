@@ -1,3 +1,5 @@
+.. _creating-vehicle:
+
 Creating Vehicle from Scratch
 =============================
 
@@ -8,7 +10,7 @@ exporting the model to **Unity**.
 
 For this tutorial, we separated it by steps to make it simpler, remembering 
 that all the options of the components will not be explained for didactic 
-reasons. All explanation about the properties will be done in :ref:`advanced-vehicle-configuration`.
+reasons. All explanation about the properties will be done in :ref:`advanced-configurations`.
 
 Configuring Model
 ~~~~~~~~~~~~~~~~~
@@ -155,6 +157,8 @@ We also have to organize the tower structure, a good diagram to use as an exampl
     :scale: 65%
 
 After the proper settings, we are finally going to add physics to our vehicle.
+
+.. _adding_physics_on_vehicle:
 
 Adding physics to the vehicle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

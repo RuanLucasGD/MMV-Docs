@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; MMV Modern Military Vehicle System  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> MMV Modern Military Vehicle System
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-main-system">The Main System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-the-vehicle-behaves">How the vehicle behaves</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#movimentation">Movimentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-tracks-work">How do Tracks Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#weapon-system">Weapon System</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_vehicle.html">Creating Vehicle from Scratch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_configurations.html">Advanced Components Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_controllers.html">Custom Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MMV Modern Military Vehicle System</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview">
+<span id="overview-main-system"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
+<p>Here’s a summary of how the <strong>MMV</strong> architecture works and what you can do.</p>
+<section id="the-main-system">
+<h2>The Main System<a class="headerlink" href="#the-main-system" title="Permalink to this headline"></a></h2>
+<p>The main system consists of vehicle physics and the entire control system, such
+as acceleration, steering, braking and gun turret movement. All other systems are just
+<strong>add-ons</strong> to this main system and are <strong>not mandatory</strong>, allowing them to be replaced
+by one customized to the developer’s taste. Here’s a summary of how the <strong>MMV</strong>
+architecture works and what you can do.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/main_system_diagram.jpg"><img alt="0%" src="_images/main_system_diagram.jpg" style="width: 543.9px; height: 525.6999999999999px;" /></a>
+</figure>
+<p>The vehicle system is made up of <strong>modules</strong> that communicate, each module is responsible
+for an essential part of the vehicle. You can access some vehicle API functions and
+give commands, for example, tell the vehicle where to go or tell the gun turret module
+where to aim, (this will be explained in the next modules of this documentation).</p>
+</section>
+<section id="how-the-vehicle-behaves">
+<h2>How the vehicle behaves<a class="headerlink" href="#how-the-vehicle-behaves" title="Permalink to this headline"></a></h2>
+<p>The <strong>MMV</strong> has a custom wheel physics system, we managed to make the wheel configuration
+very simple and it is still very stable for the purpose of Asset. The vehicle’s system
+will already do most of the hard work for you and so you just need to take care of passing
+the control commands.</p>
+<section id="movimentation">
+<h3>Movimentation<a class="headerlink" href="#movimentation" title="Permalink to this headline"></a></h3>
+<p>In the case of an <strong>MBT</strong> (Main Battle Tank) vehicle, all your vehicle movement control is
+based on the acceleration of the wheels, whether they are going backwards or forwards
+and the speed at which they are moving. An MBT vehicle from the <strong>MMV</strong> is no different, we
+use this same principle, to better understand, below is an example of how the acceleration
+influences the vehicle’s direction.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/mbt_directions_demo.svg"><img alt="0%" height="3072" src="_images/mbt_directions_demo.svg" width="4096" /></a>
+</figure>
+</section>
+<section id="how-do-tracks-work">
+<h3>How do Tracks Work<a class="headerlink" href="#how-do-tracks-work" title="Permalink to this headline"></a></h3>
+<p>The tracks use fake simulation to look like they actually move. The treadmill model is
+linked to a bone armature, one bone per wheel and via script this bone will follow the wheel’s
+position generating the effect that movement.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/suspension_demo.gif"><img alt="0%" src="_images/suspension_demo.gif" style="width: 558.0px; height: 313.1px;" /></a>
+</figure>
+<p>This solves the suspension problem, but there is another point that needs attention, which
+is the issue of vehicle acceleration, the treadmill needs to respond to the speed at which
+the vehicle moves and for that there is an integrated system in the wheel control script of
+the MBT vehicle that changes the texture offset of the mat material giving the feeling of
+movement.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/mbt_movement_demo.gif"><img alt="0%" src="_images/mbt_movement_demo.gif" style="width: 560.0px; height: 315.0px;" /></a>
+</figure>
+</section>
+<section id="weapon-system">
+<h3>Weapon System<a class="headerlink" href="#weapon-system" title="Permalink to this headline"></a></h3>
+<p>Only the turret system is integrated into the vehicle, fire control is done separately by other
+scripts. The main job of the turret is just aiming at some position in the world respecting the
+vehicle’s angle limits.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/turret_aim.jpg"><img alt="0%" src="_images/turret_aim.jpg" style="width: 563.2px; height: 316.8px;" /></a>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Ruan Lucas.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

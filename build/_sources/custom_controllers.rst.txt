@@ -171,4 +171,25 @@ system already configured in your vehicle.
 
 .. figure:: images/custom_controlers/vehicle_shooter_manager.jpg
 
+.. code-block:: csharp
+
+    using UnityEngine;
+    using MMV;
+    
+    public class ShooterController : MonoBehaviour
+    {
+        private MMV_ShooterManager shooterManager;
+    
+        void Start()
+        {
+            shooterManager = GetComponent<MMV_ShooterManager>();
+        }
+    
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0)) shooterManager.Shoot();
+        }
+    }
+
+
 .. figure:: images/custom_controlers/vehicle_shooter_demo.gif

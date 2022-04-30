@@ -18,8 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API" href="api.html" />
-    <link rel="prev" title="Advanced Components Configuration bsada" href="advanced_configurations.html" /> 
+    <link rel="prev" title="Advanced Components Configuration" href="advanced_configurations.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,9 +41,17 @@
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="creating_vehicle.html">Creating Vehicle from Scratch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced_configurations.html">Advanced Components Configuration bsada</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Custom Controllers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_configurations.html">Advanced Components Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Custom Controllers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mbt-vehicle">MBT Vehicle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#moving-the-vehicle-to-a-world-position">Moving the vehicle to a world position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integration-with-navmeshagent-ai">Integration with NavMeshAgent AI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controlling-turret-rotation">Controlling turret rotation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#weapon-system">Weapon System</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -73,15 +80,171 @@
              
   <section id="custom-controllers">
 <h1>Custom Controllers<a class="headerlink" href="#custom-controllers" title="Permalink to this headline"></a></h1>
-<p>To do.</p>
+<section id="mbt-vehicle">
+<h2>MBT Vehicle<a class="headerlink" href="#mbt-vehicle" title="Permalink to this headline"></a></h2>
+<p><strong>MMV</strong> allows you to create scripts to control vehicles and their components in a simple way.
+Use this if you want to fit a vehicle into a game with mechanics different from those proposed
+by standard MMV controllers, such as top down or strategy games.</p>
+<section id="moving-the-vehicle-to-a-world-position">
+<h3>Moving the vehicle to a world position<a class="headerlink" href="#moving-the-vehicle-to-a-world-position" title="Permalink to this headline"></a></h3>
+<p>Before starting, you need a vehicle already configured, without the control component, just the
+vehicle itself.</p>
+<figure class="align-default">
+<img alt="_images/vehicle_default.jpg" src="_images/vehicle_default.jpg" />
+</figure>
+<p>Create a script to control our vehicle, it should look like this.</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">MMV</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">VehicleMoveTo</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">target</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">deathCurve</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0.1f</span><span class="p">;</span><span class="w">        </span><span class="c1">// do not turn to the direction to the target if the angle to it is small.</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">turnWithAngle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">45.0f</span><span class="p">;</span><span class="w">    </span><span class="c1">// when the angle to the target is too big, turn full force to the target.</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">brakeVelocity</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">2.0f</span><span class="p">;</span><span class="w">     </span><span class="c1">// if the vehicle is turning at full speed to the right or left, check that the speed is high. If so, brake.</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">MMV_MBT_Vehicle</span><span class="w"> </span><span class="n">vehicle</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">vehicle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MMV_MBT_Vehicle</span><span class="p">&gt;();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">vehicle</span><span class="p">.</span><span class="n">MoveTo</span><span class="p">(</span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">deathCurve</span><span class="p">:</span><span class="w"> </span><span class="n">deathCurve</span><span class="p">,</span><span class="w"> </span><span class="n">brakeVelocity</span><span class="p">:</span><span class="w"> </span><span class="n">brakeVelocity</span><span class="p">,</span><span class="w"> </span><span class="n">turnWithAngle</span><span class="p">:</span><span class="w"> </span><span class="n">turnWithAngle</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This script is responsible for telling the vehicle where to go, and how to behave in turns.
+To tell where to go, simply pass the potion from the target to the vehicle.
+The way it behaves is dictated by these 3 variables, <strong>deathCurve</strong>, <strong>turnWithAngle</strong>, <strong>brakeVelocity.</strong></p>
+<p><strong>deathCurve:</strong> The dead angle to the target, the vehicle will simply not turn if the angle to the
+target is less than deathCurve. Example:</p>
+<figure class="align-default">
+<img alt="_images/death_curve_example.svg" src="_images/death_curve_example.svg" /></figure>
+<p><strong>turnWithAngle:</strong> tells the vehicle that when it has to make a very big turn to the target it should use all the
+throttle to turn left or right.</p>
+<figure class="align-default">
+<img alt="_images/turn_with_angle_example.svg" src="_images/turn_with_angle_example.svg" /></figure>
+<p><strong>BrakeVelocity:</strong> Says that if the vehicle needs to turn with full throttle to the left or right, the
+vehicle must stop if it is above the brakeVelocity speed before turning, ensuring that it is more
+agile in the curve.</p>
+<p>Script result</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The turret is always turning to the same position as the target has not been passed to the turret to aim.</p>
+</div>
+<figure class="align-default">
+<img alt="_images/vehicle_move_to_demo.gif" src="_images/vehicle_move_to_demo.gif" />
+</figure>
+</section>
+<section id="integration-with-navmeshagent-ai">
+<h3>Integration with NavMeshAgent AI<a class="headerlink" href="#integration-with-navmeshagent-ai" title="Permalink to this headline"></a></h3>
+<p>MMV also supports Unity’s navmesh system, allowing us to create more elaborate AIs in a simple way,
+what we need to do is create a <strong>child</strong> <a class="reference external" href="https://docs.unity3d.com/Manual/nav-CreateNavMeshAgent.html">navMeshAgent</a>
+of the vehicle and pass it to our controller, this is already capable of making the vehicle walk to
+the target using scene <a class="reference external" href="https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html">NavMesh</a>.</p>
+<figure class="align-default">
+<img alt="_images/vehicle_ai_example.jpg" src="_images/vehicle_ai_example.jpg" />
+</figure>
+<p>Let’s assume you already have a navmesh set up in the scene.</p>
+<p>Use this base script to control your vehicle using NavMesh features:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine.AI</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">MMV</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">VehicleAI</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">target</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">NavMeshAgent</span><span class="w"> </span><span class="n">agent</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">MMV_MBT_Vehicle</span><span class="w"> </span><span class="n">vehicle</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">deathCurve</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0.1f</span><span class="p">;</span><span class="w">        </span><span class="c1">// do not turn to the direction to the target if the angle to it is small.</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">turnWithAngle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">45.0f</span><span class="p">;</span><span class="w">    </span><span class="c1">// when the angle to the target is too big, turn full force to the target.</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">brakeVelocity</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">1f</span><span class="p">;</span><span class="w">       </span><span class="c1">// if the vehicle is turning at full speed to the right or left, check that the speed is high. If so, brake.</span>
+
+
+<span class="w">    </span><span class="c1">// To follow the path the vehicle needs to make curves, if it is at high speed it will leave the path so add this variable so</span>
+<span class="w">    </span><span class="c1">// that the vehicle detects approaching curves so it can decelerate when it gets close.</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">detectCurveInDistance</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">20</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// When the curve is detected and the vehicle decelerates, set a minimum speed so the vehicle does not move too slowly.</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">minVelocity</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">10</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">agent</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GetComponentInChildren</span><span class="p">&lt;</span><span class="n">NavMeshAgent</span><span class="p">&gt;();</span><span class="w"></span>
+<span class="w">        </span><span class="n">vehicle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MMV_MBT_Vehicle</span><span class="p">&gt;();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">vehicle</span><span class="p">.</span><span class="n">MoveTo</span><span class="p">(</span><span class="n">agent</span><span class="p">:</span><span class="w"> </span><span class="n">agent</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">deathCurve</span><span class="p">:</span><span class="w"> </span><span class="n">deathCurve</span><span class="p">,</span><span class="w"> </span><span class="n">brakeVelocity</span><span class="p">:</span><span class="w"> </span><span class="n">brakeVelocity</span><span class="p">,</span><span class="w"> </span><span class="n">detectCurveInDistance</span><span class="p">:</span><span class="w"> </span><span class="n">detectCurveInDistance</span><span class="p">,</span><span class="w"> </span><span class="n">minVelocity</span><span class="p">:</span><span class="w"> </span><span class="n">minVelocity</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>As you can see, there are two more vehicle control variables in our script:</p>
+<p><strong>detectCurveInDistance:</strong> The distance that the vehicle detects a curve to start decelerating,
+preventing it from going off course in curves if it is at high speed.</p>
+<figure class="align-default">
+<img alt="_images/detect_curve_distance.svg" src="_images/detect_curve_distance.svg" /></figure>
+<p><strong>minVelocity:</strong> Assign a minimum speed to the vehicle so that it does not go too slowly in curves.</p>
+<figure class="align-default">
+<img alt="_images/vehicle_navmesh_ai_demo.gif" src="_images/vehicle_navmesh_ai_demo.gif" />
+</figure>
+</section>
+<section id="controlling-turret-rotation">
+<h3>Controlling turret rotation<a class="headerlink" href="#controlling-turret-rotation" title="Permalink to this headline"></a></h3>
+<p>To control the shooting turret’s movement, we simply need to tell it where to aim.</p>
+<p>Unlike other controllers, aiming is done through a <a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/using-delegates">delegate</a>,
+you write a method that returns the target’s position and assigns it the turret.</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">MMV</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">VehicleTurretController</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">target</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">MMV_MBT_Vehicle</span><span class="w"> </span><span class="n">vehicle</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">vehicle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MMV_MBT_Vehicle</span><span class="p">&gt;();</span><span class="w"></span>
+<span class="w">        </span><span class="n">vehicle</span><span class="p">.</span><span class="n">TurretCannonTargetPosition</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GetTargetPosition</span><span class="p">;</span><span class="w">   </span><span class="c1">// &lt;--- pass as delegate</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Vector3</span><span class="w"> </span><span class="nf">GetTargetPosition</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">position</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="_images/turret_moviment_demo.gif" src="_images/turret_moviment_demo.gif" />
+</figure>
+</section>
+</section>
+<section id="weapon-system">
+<h2>Weapon System<a class="headerlink" href="#weapon-system" title="Permalink to this headline"></a></h2>
+<p>The weapon system comes down to how simple it is to create a custom controller.
+Just access the shot manager script and ask for a shot. Remember that you need to have the fire
+system already configured in your vehicle.</p>
+<figure class="align-default">
+<img alt="_images/vehicle_shooter_manager.jpg" src="_images/vehicle_shooter_manager.jpg" />
+</figure>
+<figure class="align-default">
+<img alt="_images/vehicle_shooter_demo.gif" src="_images/vehicle_shooter_demo.gif" />
+</figure>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="advanced_configurations.html" class="btn btn-neutral float-left" title="Advanced Components Configuration bsada" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="advanced_configurations.html" class="btn btn-neutral float-left" title="Advanced Components Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

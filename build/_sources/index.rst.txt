@@ -24,4 +24,3 @@ Below you will see all the **MMV** documentation separated by themes, enjoy:
     creating_vehicle
     advanced_configurations
     custom_controllers
-    api

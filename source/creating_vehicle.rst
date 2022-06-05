@@ -362,10 +362,10 @@ moment, which is the **“Bullet” property**.
 Creating a Bullet
 ^^^^^^^^^^^^^^^^^
 
-A bullet is nothing more than a prefab. An object with a **RigidBody** and a **collider** marked 
-as a **trigger**. Following the image configuration. **The bullet must have a projectile component**. 
-In it there are not so many properties other than explosion effects that you can add, that's because 
-the main properties of the projectile is done by the **shot manager**.
+A bullet is nothing more than a prefab. An object with a **RigidBody** and a **collider** marked as a **trigger**. 
+Following the image configuration. The bullet must have a **projectile component**. It doesn't have as many 
+properties other than explosion particles and sound that you can add, that's because the main properties 
+of the projectile is done by the **shot manager** that is in the vehicle.
 
 .. figure:: images/creating_vehicle/bullet.jpg
     :alt: 0%

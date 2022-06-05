@@ -41,12 +41,6 @@ will stop when not accelerating.
 
 **backward:** Maximum speed moving backwards.
 
-**max turn speed:** Maximum speed the vehicle can turn.
-
-**turn acceleration:** Engine acceleration while the vehicle is turning based on speed. Following the example 
-of the image, the slower the vehicle is turning, the greater the acceleration of the engine and the faster 
-the vehicle is turning, the lower the engine force.
-
 Brake
 .....
 

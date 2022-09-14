@@ -23,8 +23,8 @@ for an essential part of the vehicle. You can access some vehicle API functions 
 give commands, for example, tell the vehicle where to go or tell the gun turret module 
 where to aim, (this will be explained in the next modules of this documentation).
 
-How the vehicle behaves
-~~~~~~~~~~~~~~~~~~~~~~~~
+How the tracked vehicle behaves
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The **MMV** has a custom wheel physics system, we managed to make the wheel configuration 
 very simple and it is still very stable for the purpose of Asset. The vehicle's system 
@@ -34,7 +34,7 @@ the control commands.
 Movimentation
 -------------
 
-In the case of an **MBT** (Main Battle Tank) vehicle, all your vehicle movement control is 
+In the case of tracked vehicle, all your vehicle movement control is 
 based on the acceleration of the wheels, whether they are going backwards or forwards 
 and the speed at which they are moving. An MBT vehicle from the **MMV** is no different, we 
 use this same principle, to better understand, below is an example of how the acceleration 

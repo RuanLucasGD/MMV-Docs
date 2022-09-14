@@ -20,7 +20,7 @@ Below you will see all the **MMV** documentation separated by themes, enjoy:
 
     introduction
     overview
-    examples
-    creating_vehicle
-    advanced_configurations
+    tracked_vehicles
+    configuration_files
+    another_systems
     custom_controllers

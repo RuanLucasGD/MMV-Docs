@@ -21,6 +21,7 @@ Below you will see all the **MMV** documentation separated by themes, enjoy:
     introduction
     overview
     tracked_vehicles
+    wheeled_vehicles
     configuration_files
     another_systems
     custom_controllers

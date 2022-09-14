@@ -39,11 +39,11 @@ Describe all main shooting behavior.
 Effects
 -------
 
-.. figure:: images/advanced_configurations/shooter_manager/shooter_manager_effects.jpg
+.. figure:: images/another_systems/shooter_effects.jpg
 
-Applies effects when firing.
+Instantiates objects when a projectile is instantiated.
 
-**Particles:** Particles that will be instantiated when it fires.
+**Spawn on shot:** Objects that must be created, such as particles
 
 Sound
 -----
@@ -82,6 +82,8 @@ and mouse and gamepad.
 
 **change camera key:** The key or button to switch between cameras if you have more than one.
 
+**axis sensitivity:** Camera movement sensitivity
+
 Camera Behaviour
 ----------------
 
@@ -96,7 +98,7 @@ Describe how the camera should behave.
 types
 -----
 
-Game cameras.
+Game cameras
 .............
 
 .. figure:: images/advanced_configurations/camera_controller/standart_camera_controller_types.jpg
@@ -123,7 +125,10 @@ __________
     .. figure:: images/advanced_configurations/camera_controller/standart_camera_controller_camera_types_demo.jpg
 
 **min vertical:** The minimum angle to the vertical.
+
 **max vertical:** The maximum angle vertically.
+
+**align to vehicle:** Aligns the Y axis of the camera with that of the vehicle, by default it is already activated in FIRST_PERSON mode.
 
 Options for FIRST_PERSON
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -136,7 +141,5 @@ Options for THIRD_PERSON
 **camera height:** The height of the camera relative to the vehicle.
 
 **camera distance:** The distance of the camera from the vehicle
-
-**align to vehicle:** Aligns the Y axis of the camera with that of the vehicle, by default it is already activated in FIRST_PERSON mode.
 
 **camera collision:** Camera collision sensor, prevents it from entering walls, add here the collision layers of your scene, by default the layer is *“Default”*.

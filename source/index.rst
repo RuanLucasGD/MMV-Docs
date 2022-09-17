@@ -24,4 +24,3 @@ Below you will see all the **MMV** documentation separated by themes, enjoy:
     wheeled_vehicles
     configuration_files
     another_systems
-    custom_controllers

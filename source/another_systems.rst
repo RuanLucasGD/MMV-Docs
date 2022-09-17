@@ -18,7 +18,7 @@ Describe all main shooting behavior.
 
 **spawner:** Transform from the position where the shot will come from.
 
-**bullet:** The projectile that will be instantiated. It is important that this object has the Projectile component.
+**bullet:** :ref:`The projectile <projectile>` that will be instantiated. It is important that this object has the Projectile component.
 
 **ignore layer:** The projectile will only identify a collision with another object if it does not have that layer defined.
 
@@ -54,6 +54,16 @@ Sound
 
 **clip:** The audio clip of the shot.
 
+.. _projectile:
+
+Bullet Projectile
+~~~~~~~~~~~~~~~~~
+
+A projectile is an object that can be used by a Shooter manager.
+
+it is formed by a GameObject with a **kinematic Rigidbody** and a **Collider marked as trigger**, add a **projectile component** and your projectile will be fired.
+
+.. figure:: images/another_systems/projectile.jpg
 
 Standart Camera Contoller Component
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

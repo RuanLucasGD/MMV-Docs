@@ -14,6 +14,7 @@ Creating Any Configuration File
 .. figure:: images/configuration_files/creating_file.jpg
 
 .. _engine settings:
+
 Engine Settings
 ~~~~~~~~~~~~~~~
 
@@ -36,6 +37,7 @@ An engine configuration file is responsible for storing all the behavior data of
 **Gears Forward/Backward:** Forward or reverse gear shifting speeds
 
 .. _wheel settings:
+
 Wheels Settings
 ~~~~~~~~~~~~~~~
 

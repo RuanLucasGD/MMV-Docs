@@ -59,7 +59,7 @@ html_static_path = ['_static']
 extensions = [
 
     #"sphinx_rtd_theme"
-    "sphinx_rtd_dark_mode"
+    "sphinx_rtd_theme"
 ]
 
 html_theme = "sphinx_rtd_theme"

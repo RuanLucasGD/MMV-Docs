@@ -19,7 +19,7 @@
 
 import sphinx_rtd_theme
 project = 'MMV Modern Military Vehicle System'
-copyright = '2021, Ruan Lucas'
+copyright = '2022, Ruan Lucas'
 author = 'Ruan Lucas'
 
 

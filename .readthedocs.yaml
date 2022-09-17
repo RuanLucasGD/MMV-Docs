@@ -1,0 +1,6 @@
+build:
+  image: latest
+
+python:
+  version: 1.2
+  setup_py_install: true

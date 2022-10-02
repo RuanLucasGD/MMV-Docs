@@ -75,9 +75,7 @@ Add your vehicle's wheels here.
 
 .. figure:: images/wheeled_vehicle/wheels_wheels.jpg
 
-**Collider:** empty object for wheel position
-
-**Mesh:** Wheel model
+**Mesh:** Object that will be used to apply wheel physics on the vehicle
 
 **Accelerate:** If the wheel is able to use the acceleration force
 

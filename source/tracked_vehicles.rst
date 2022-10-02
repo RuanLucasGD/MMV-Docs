@@ -87,11 +87,7 @@ Add your vehicle's wheels here.
 
 .. figure:: images/tracked_vehicle/wheels_wheels.jpg
 
-**Collider:** Transform of the central position of the wheel (empty object), will be used to calculate the 
-suspension and movement of the wheel.
-
-**Mesh:** Another transform that is in the same position as the wheel, but has a MeshRenderer to be the 3D 
-model of the wheel.
+**Mesh:** Object that will be used to apply wheel physics on the vehicle.
 
 **Bone:** A track bone, which is next to the wheel.
 
